@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/logobaru"
+        android:padding="@dimen/_20sdp"
+        >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_200sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Buat Akun"
+
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_30sdp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        app:boxBackgroundColor="@color/white">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:padding="@dimen/_20sdp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        app:boxBackgroundColor="@color/white">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:padding="@dimen/_20sdp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        app:boxBackgroundColor="@color/white">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:hint="No. Handphone"
+                            android:inputType="phone"
+                            android:padding="@dimen/_20sdp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:backgroundTint="@color/blue"
+                        android:text="Daftar"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/buttonback">
+
+    </ImageView>
+
+    <Button
+        android:id="@+id/Btnback"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:text="Kembali" />
+    </RelativeLayout>
+</ScrollView>
+
+
+
+
+<!--   <androidx.cardview.widget.CardView-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="match_parent"-->
+<!--       android:layout_marginTop="300dp"-->
+<!--       android:layout_marginBottom="200dp"-->
+<!--       android:layout_marginLeft="20dp"-->
+<!--       android:layout_marginRight="20dp"-->
+<!--       app:cardBackgroundColor="@color/white"-->
+
+<!--       >-->
+
+
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextUsername"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Username"-->
+<!--        android:textColorHint="@color/black"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginBottom="16dp"-->
+
+<!--        />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextEmail"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Email"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        android:textColorHint="@color/black"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        />-->
+
+
+<!--    <EditText-->
+
+<!--        android:id="@+id/editTextPassword"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Password"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textColorHint="@color/black"-->
+<!--        android:layout_marginTop="100dp"-->
+
+<!--        />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/buttonRegister"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="@color/blue"-->
+<!--        android:text="Register"-->
+<!--        android:layout_marginTop="150dp"-->
+<!--        android:textColor="#fff" />-->
+
+<!--   </androidx.cardview.widget.CardView>-->
+
