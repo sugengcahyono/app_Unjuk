@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Login extends AppCompatActivity {
 
@@ -15,7 +16,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // Menghubungkan tombol dengan kode Java
-        Button disini = findViewById(R.id.Btndisini);
+        TextView disini = findViewById(R.id.Btndisini);
 
         // Menambahkan onClickListener untuk tombol
         disini.setOnClickListener(new View.OnClickListener() {
@@ -28,7 +29,7 @@ public class Login extends AppCompatActivity {
         });
 
         // Menghubungkan tombol kedua dengan kode Java
-        Button lupapassword = findViewById(R.id.BtnLupapassword);
+        TextView lupapassword = findViewById(R.id.BtnLupapassword);
 
         // Menambahkan onClickListener untuk tombol kedua
         lupapassword.setOnClickListener(new View.OnClickListener() {
