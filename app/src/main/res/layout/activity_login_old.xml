@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/logobaru"
+        android:padding="@dimen/_20sdp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_200sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:padding="@dimen/_10sdp"
+                android:text="Masuk"
+
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_30sdp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                app:boxBackgroundColor="@color/white">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_20sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                app:boxBackgroundColor="@color/white">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/_20sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <Button
+                android:id="@+id/BtnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:backgroundTint="@color/blue"
+                android:text="Masuk"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_220sdp"-->
+<!--            android:layout_marginBottom="@dimen/_150sdp"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Masuk"-->
+<!--                android:textColor="@color/blue"-->
+<!--                android:textSize="@dimen/_30sdp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginTop="0dp"-->
+<!--                android:layout_marginBottom="@dimen/_30sdp"-->
+<!--                />-->
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="10dp"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                >-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/_150sdp"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <com.google.android.material.textfield.TextInputLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:boxBackgroundColor="@color/white"-->
+<!--                        android:layout_margin="@dimen/_10sdp"-->
+<!--                        android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                        android:layout_centerVertical="true">-->
+
+<!--                        <EditText-->
+
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="@dimen/_50sdp"-->
+<!--                            android:hint="Email"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textColorHint="@color/black"-->
+<!--                            android:inputType="textEmailAddress"-->
+<!--                            android:padding="20dp"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            />-->
+<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--                    <com.google.android.material.textfield.TextInputLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:boxBackgroundColor="@color/white"-->
+<!--                        android:layout_margin="@dimen/_10sdp"-->
+<!--                        android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        >-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:hint="Passwoard"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textColorHint="@color/black"-->
+<!--                            android:layout_marginTop="@dimen/_40sdp"-->
+<!--                            android:inputType="textPassword" />-->
+
+<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+<!--                </LinearLayout>-->
+<!--            </com.google.android.material.card.MaterialCardView>-->
+
+
+<!--            <Button-->
+<!--                android:id="@+id/BtnLogin"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginTop="@dimen/_10sdp"-->
+<!--                android:text="Masuk"-->
+<!--                android:textSize="@dimen/_15sdp"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/blue"/>-->
+
+
+
+<!--        </LinearLayout>-->
+
+
+
+
+
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_430sdp"
+            >
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Belum Punya Akun? Klik"
+                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:padding="@dimen/_1sdp"
+
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    />
+                <Button
+                    android:id="@+id/Btndisini"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_1sdp"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:text="Disini"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/blue"
+                    android:paddingRight="@dimen/_40sdp"
+                    android:textAllCaps="false"/>
+
+
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/BtnLupapassword"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:text="Lupa Password"
+
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_500sdp"
+            android:layout_centerHorizontal="true"
+            android:textAllCaps="false" />
+
+
+    </RelativeLayout>
+
+</ScrollView>
