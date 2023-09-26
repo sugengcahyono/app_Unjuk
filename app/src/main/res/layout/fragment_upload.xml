@@ -3,22 +3,182 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Upload">
 
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="40dp"
-        android:text="Upload" />
-    <ImageView
-        android:id="@+id/menu_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
-    <!--            android:src="@drawable/img" -->
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       >
 
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardElevation="@dimen/_1sdp"
+           app:cardMaxElevation="5dp"
+           >
+
+           <TextView
+               android:gravity="center"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="@dimen/_20sdp"
+               android:textColor="@color/white"
+               android:background="@color/blue"
+               android:padding="@dimen/_10sdp"
+               android:textStyle="bold"
+               android:text="Upload"
+               />
+
+       </androidx.cardview.widget.CardView>
+
+       <ScrollView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:padding="@dimen/_10sdp">
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="@dimen/_10sdp"
+               android:layout_marginTop="@dimen/_5sdp"
+               android:layout_marginRight="@dimen/_10sdp"
+               android:background="@color/white">
+
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:hint="Nama Produk"
+
+                   android:padding="@dimen/_20sdp"
+                   android:textColor="@color/black"
+                   android:textColorHint="@color/black" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="@dimen/_10sdp"
+               android:layout_marginTop="@dimen/_5sdp"
+               android:layout_marginRight="@dimen/_10sdp"
+               android:background="@color/white">
+
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:hint="Harga"
+
+                   android:padding="@dimen/_20sdp"
+                   android:textColor="@color/black"
+                   android:textColorHint="@color/black" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="@dimen/_10sdp"
+               android:layout_marginTop="@dimen/_5sdp"
+               android:layout_marginRight="@dimen/_10sdp"
+               android:background="@color/white">
+
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:hint="Kategori"
+
+                   android:padding="@dimen/_20sdp"
+                   android:textColor="@color/black"
+                   android:textColorHint="@color/black" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="@dimen/_10sdp"
+               android:layout_marginTop="@dimen/_5sdp"
+               android:layout_marginRight="@dimen/_10sdp"
+               android:background="@color/white">
+
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/_150sdp"
+                   android:layout_centerVertical="true"
+                   android:hint="Deskripsi Produk"
+
+                   android:padding="@dimen/_20sdp"
+                   android:textColor="@color/black"
+                   android:textColorHint="@color/black" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="@dimen/_10sdp"
+               android:layout_marginTop="@dimen/_5sdp"
+               android:layout_marginRight="@dimen/_10sdp"
+               android:background="@color/white">
+
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:hint="PIRT"
+
+                   android:padding="@dimen/_20sdp"
+                   android:textColor="@color/black"
+                   android:textColorHint="@color/black" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="@dimen/_10sdp"
+               android:layout_marginTop="@dimen/_5sdp"
+               android:layout_marginRight="@dimen/_10sdp"
+               android:background="@color/white">
+
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:hint="BPOM"
+
+                   android:padding="@dimen/_20sdp"
+                   android:textColor="@color/black"
+                   android:textColorHint="@color/black" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="@dimen/_10sdp"
+               android:layout_marginTop="@dimen/_5sdp"
+               android:layout_marginRight="@dimen/_10sdp"
+               android:background="@color/white">
+
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:hint="Id Halal"
+
+                   android:padding="@dimen/_20sdp"
+                   android:textColor="@color/black"
+                   android:textColorHint="@color/black" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+       </LinearLayout>
+       </ScrollView>
+   </LinearLayout>
 
 </FrameLayout>
