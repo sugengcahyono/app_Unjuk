@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Register extends AppCompatActivity {
 
@@ -13,7 +14,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Button backButton = findViewById(R.id.Btnback);
+        ImageButton backButton = findViewById(R.id.Btnback);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

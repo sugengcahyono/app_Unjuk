@@ -53,10 +53,12 @@
                     >
 
                     <EditText
+                        android:id="@+id/txtemail"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_centerVertical="true"
                         android:hint="Email"
+                        android:textSize="@dimen/_15sdp"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
@@ -65,19 +67,33 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textinputlayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    app:boxBackgroundColor="@color/white">
+                    app:boxBackgroundColor="@color/white"
+
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+
+                    app:endIconMode="password_toggle"
+
+                    app:helperTextEnabled="true"
+                    app:helperText="Masukkan Password"
+                    app:helperTextTextColor="@android:color/holo_blue_dark"
+                    >
 
                     <EditText
+                        android:id="@+id/pass"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_centerVertical="true"
                         android:hint="Password"
+                        android:textSize="@dimen/_15sdp"
                         android:inputType="textPassword"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
+
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -89,6 +105,18 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:backgroundTint="@color/blue"
                     android:text="Masuk"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+
+                <Button
+                    android:id="@+id/google"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:backgroundTint="@color/blue"
+                    android:text="Login dengan Google"
                     android:textSize="@dimen/_15sdp"
                     android:textStyle="bold"
                     android:textColor="@color/white"

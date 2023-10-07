@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class LupaPassword extends AppCompatActivity {
 
@@ -28,7 +29,7 @@ public class LupaPassword extends AppCompatActivity {
             }
         });
 
-        Button backButton = findViewById(R.id.Btnback);
+        ImageButton backButton = findViewById(R.id.Btnback);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
         private BottomNavigationView bottomNavigationView;
+        private  String nama;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
 
             bottomNavigationView = findViewById(R.id.bottom_navigation);
+            Bundle extra = getIntent().getExtras();
+            if (extra != null){
+                nama = extra.getString("NAMA");
+            }
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
