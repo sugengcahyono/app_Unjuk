@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register"
+    android:background="@drawable/logobaru"
     >
 
 
@@ -20,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/logobaru"
+
             android:padding="@dimen/_20sdp"
             >
             <RelativeLayout
@@ -69,6 +70,27 @@
                     android:textStyle="bold"
                     />
 
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:boxBackgroundColor="@color/white">
+
+                    <EditText
+                        android:id="@+id/edittext_namauser"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_centerVertical="true"
+                        android:hint="Nama User"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -77,10 +99,12 @@
                     >
 
                     <EditText
+                        android:id="@+id/edittext_emailuser"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_centerVertical="true"
                         android:hint="Email"
+                        android:textSize="@dimen/_12sdp"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
@@ -89,17 +113,51 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textinputlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:boxBackgroundColor="@color/white"
+
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+
+                    app:endIconMode="password_toggle"
+
+                    app:helperTextEnabled="true"
+                    app:helperText="Masukkan Password"
+                    app:helperTextTextColor="@android:color/holo_blue_dark"
+                    >
+
+                    <EditText
+                        android:id="@+id/pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_centerVertical="true"
+                        android:hint="Password"
+                        android:textSize="@dimen/_12sdp"
+                        android:inputType="textPassword"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     app:boxBackgroundColor="@color/white">
 
                     <EditText
+                        android:id="@+id/edittext_no.hpuser"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_centerVertical="true"
-                        android:hint="Password"
-                        android:inputType="textPassword"
+                        android:hint="No. Handphone"
+                        android:textSize="@dimen/_12sdp"
+                        android:inputType="phone"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         />
@@ -112,11 +170,12 @@
                     app:boxBackgroundColor="@color/white">
 
                     <EditText
+                        android:id="@+id/edittext_alamatuser"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_centerVertical="true"
-                        android:hint="No. Handphone"
-                        android:inputType="phone"
+                        android:hint="Alamat"
+                        android:textSize="@dimen/_12sdp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         />

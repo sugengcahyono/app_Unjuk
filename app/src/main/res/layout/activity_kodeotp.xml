@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LupaPassword"
+    android:background="@drawable/logobaru"
     >
 
 
@@ -20,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/logobaru"
+
             android:padding="@dimen/_20sdp"
             >
             <RelativeLayout
@@ -63,17 +64,27 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:text="Masukkan Kode OTP"
+                        android:text="OTP"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/_30sdp"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:text="Masukkan kode OTP yang telah dikirimkan melalui Email."
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
                         />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
                         app:boxBackgroundColor="@color/white"
+                        app:hintEnabled="false"
                         >
 
                         <EditText
@@ -81,12 +92,25 @@
                             android:layout_height="@dimen/_50sdp"
                             android:layout_centerVertical="true"
                             android:hint="Kode OTP"
+                            android:textSize="@dimen/_12sdp"
                             android:inputType="number"
                             android:textColor="@color/black"
                             android:textColorHint="@color/black"
                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/Btnkirimulang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:text="Kirim Ulang"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+
+                        />
 
 
 
@@ -94,13 +118,15 @@
                         android:id="@+id/Btnlanjut"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_50sdp"
                         android:backgroundTint="@color/blue"
                         android:text="Kirim"
                         android:textSize="@dimen/_15sdp"
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         />
+
+
 
                 </LinearLayout>
 

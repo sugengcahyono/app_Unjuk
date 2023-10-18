@@ -3,20 +3,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Profile">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/text"
-        android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="40dp"
-        android:text="Profile" />
-    <ImageView
-        android:id="@+id/menu_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        android:layout_height="@dimen/_50sdp"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/white"
+        android:background="@color/blue"
+        android:padding="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:text="Profil" />
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/_50sdp"
+    android:background="@color/abuputih"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+
+       <ImageView
+           android:layout_width="@dimen/_80sdp"
+           android:layout_height="@dimen/_80sdp"
+           android:layout_gravity="center"
+           android:src="@drawable/baseline_account_circle_24"
+
+           />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Nama User "
+            android:textSize="@dimen/_12sdp"
+            android:gravity="center"
+            />
+
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/_12sdp"
+            android:text="Email User "
+             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp">
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_EditProfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:backgroundTint="@color/white"
+                app:cornerRadius="10dp"
+                android:drawableLeft="@drawable/baseline_create_24"
+                android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
+                android:text="Edit Profil"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_Dataumkm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:backgroundTint="@color/white"
+                app:cornerRadius="10dp"
+                android:drawableLeft="@drawable/baseline_storefront_24"
+                android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
+                android:text="Data UMKM"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+
+                />
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:backgroundTint="@color/white"
+                app:cornerRadius="10dp"
+                android:drawableLeft="@drawable/outline_shopping_bag_24"
+                android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
+                android:text="Produk Saya"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:backgroundTint="@color/white"
+                app:cornerRadius="10dp"
+                android:drawableLeft="@drawable/baseline_output_24"
+                android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
+                android:text="Keluar"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
 </FrameLayout>

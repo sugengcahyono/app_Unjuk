@@ -4,4 +4,5 @@
         <!-- Customize your dark theme here. -->
          <item name="colorPrimary">@color/blue</item>
     </style>
+    <style name="Theme.UNjuk" parent="Base.Theme.UNjuk" />
 </resources>

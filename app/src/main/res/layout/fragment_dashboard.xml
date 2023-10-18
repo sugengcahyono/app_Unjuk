@@ -27,6 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:hint="Cari Produk..."
+                android:textSize="@dimen/_12sdp"
                 android:inputType="text"
                 android:maxLines="1"
                 android:imeOptions="actionSearch"

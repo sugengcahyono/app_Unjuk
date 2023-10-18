@@ -1,5 +1,6 @@
 package com.sugeng.unjuk;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,14 +29,22 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     TextInputLayout textInputLayout;
+
+    private GoogleUsers googleUsers;
     EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        googleUsers = new GoogleUsers(this);
+        Button btngoogle = findViewById(R.id.btngoogle);
 
         // Menghubungkan tombol dengan kode Java
         TextView disini = findViewById(R.id.Btndisini);
+
+        btngoogle.setOnClickListener(v -> {
+            startActivityForResult(googleUsers.getIntent(), GoogleUsers.REQUEST_CODE);
+        });
 
 
         // Menambahkan onClickListener untuk tombol
@@ -131,6 +140,15 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        googleUsers.onActivityResult(requestCode, resultCode, data);
 
 
     }
