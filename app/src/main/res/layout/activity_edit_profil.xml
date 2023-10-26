@@ -49,19 +49,35 @@
 
 
 
-            <ImageView
+            <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/baseline_account_circle_24"
-                />
+                app:cardCornerRadius="@dimen/_50sdp"
+                android:backgroundTint="@color/abuputih"
+                >
+
+                <ImageView
+                    android:id="@+id/foto_profil"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/baseline_account_circle_24"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    />
+            </androidx.cardview.widget.CardView>
+
+
 
 
             <TextView
+                android:id="@+id/btn_ubahfoto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:text="Ubah Foto"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
                 android:gravity="center"
                 />
@@ -70,6 +86,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_35sdp"
+                android:paddingHorizontal="@dimen/_11sdp"
+                android:text="Email"
+                android:textSize="@dimen/_14sdp"
+                android:gravity="left"
+                android:textStyle="bold"
+                />
+
+
+            <TextView
+                android:id="@+id/input_emailuser"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/_12sdp"
+                android:text="Email"
+               android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:textColorHint="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:paddingHorizontal="@dimen/_11sdp"
                 android:text="Nama"
                 android:textSize="@dimen/_14sdp"
@@ -87,6 +129,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_namauser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -97,37 +140,35 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:paddingHorizontal="@dimen/_11sdp"
-                android:text="Jenis Kelamin"
-                android:textSize="@dimen/_14sdp"
-                android:gravity="left"
-                android:textStyle="bold"
-                />
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="@dimen/_5sdp"-->
+<!--                android:paddingHorizontal="@dimen/_11sdp"-->
+<!--                android:text="Jenis Kelamin"-->
+<!--                android:textSize="@dimen/_14sdp"-->
+<!--                android:gravity="left"-->
+<!--                android:textStyle="bold"-->
+<!--                />-->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:boxBackgroundColor="@color/white"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:hintEnabled="false"
-                >
+<!--            jenis kelamin -->
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/_12sdp"
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/btnjeniskelamin"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_50sdp"-->
+<!--                android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                android:textSize="@dimen/_12sdp"-->
+<!--                app:cornerRadius="@dimen/_5sdp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textColorHint="@color/black"-->
+<!--                android:backgroundTint="@color/white"-->
 
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
+<!--                android:textStyle="normal"-->
+<!--                android:drawableRight="@drawable/dropdown"-->
+<!--                android:gravity="center_vertical|start"-->
+<!--                android:paddingHorizontal="@dimen/_10sdp"-->
+<!--                />-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -150,6 +191,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_nohandphoneuser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -182,6 +224,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_alamatuser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -197,7 +240,7 @@
 
 
             <Button
-                android:id="@+id/Btnlanjut"
+                android:id="@+id/Btn_simpaneditprofile"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_50sdp"

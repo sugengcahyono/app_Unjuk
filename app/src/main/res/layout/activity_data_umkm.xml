@@ -25,6 +25,7 @@
 
 
         <TextView
+
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -49,16 +50,28 @@
             android:orientation="vertical">
 
 
-
-            <ImageView
+            <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/baseline_storefront_24"
-                />
+                app:cardCornerRadius="@dimen/_50sdp"
+                android:backgroundTint="@color/abuputih"
+                >
+
+                <ImageView
+                    android:id="@+id/foto_umkm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/baseline_storefront_24"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    />
+            </androidx.cardview.widget.CardView>
 
 
             <TextView
+                android:id="@+id/btn_ubahfotoumkm"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -88,6 +101,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_namaumkm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -98,6 +112,8 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
+
+<!--            jenis usaha-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -109,26 +125,22 @@
                 android:textStyle="bold"
                 />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_jenisusaha"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:boxBackgroundColor="@color/white"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:textSize="@dimen/_12sdp"
+                app:cornerRadius="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:backgroundTint="@color/white"
+                android:text="Pilih Jenis Usaha"
+                android:textStyle="normal"
+                android:drawableRight="@drawable/dropdown"
+                android:gravity="center_vertical|start"
                 android:paddingHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:hintEnabled="false"
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/_12sdp"
-
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -151,6 +163,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_nibumkm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -183,6 +196,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_nohpumkm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -205,26 +219,26 @@
                 android:textStyle="bold"
                 />
 
-            <com.google.android.material.textfield.TextInputLayout
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKecamatan"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:boxBackgroundColor="@color/white"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:textSize="@dimen/_12sdp"
+                app:cornerRadius="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:backgroundTint="@color/white"
+                android:text="Pilih Kecamatan"
+                android:textStyle="normal"
+                android:drawableRight="@drawable/dropdown"
+                android:gravity="center_vertical|start"
                 android:paddingHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:hintEnabled="false"
-                >
+            />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/_12sdp"
 
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -247,6 +261,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_alamatumkm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -262,7 +277,7 @@
 
 
             <Button
-                android:id="@+id/Btnlanjut"
+                android:id="@+id/Btn_Simpandataumkm"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_50sdp"

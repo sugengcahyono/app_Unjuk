@@ -1,8 +1,13 @@
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
-        gradlePluginPortal()
+        maven{
+            url ("https://jcenter.bintray.com")
+            maven {url 'https://jitpack.io'}
+        }
+        jcenter()
     }
 }
 dependencyResolutionManagement {
@@ -10,7 +15,39 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven{
+            url ("https://jcenter.bintray.com")
+            maven {url 'https://jitpack.io'}
+        }
+        jcenter()
     }
 }
 rootProject.name = "UNjuk"
 include ':app'
+
+
+//
+//pluginManagement {
+//    repositories {
+//        gradlePluginPortal()
+//        google()
+//        mavenCentral()
+//        maven{
+//            url ("https://jcenter.bintray.com")
+//            maven {url 'https://jitpack.io'}
+//        }
+//        jcenter()
+//    }
+//}
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//        maven{
+//            url ("https://jcenter.bintray.com")
+//            maven {url 'https://jitpack.io'}
+//        }
+//        jcenter()
+//    }
+//}

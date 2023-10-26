@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +16,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UNjuk"
         tools:targetApi="31">
+        <activity
+            android:name=".Konfirmasi_password_baru"
+            android:exported="false" />
+        <activity
+            android:name=".Produk_klik"
+            android:exported="false" />
+        <activity
+            android:name=".Notifikasi_Klik"
+            android:exported="false" />
+        <activity
+            android:name=".Produk_EditProduk"
+            android:exported="false" />
+        <activity
+            android:name=".Produk_Kerajinan"
+            android:exported="false" />
+        <activity
+            android:name=".Produk_minuman"
+            android:exported="false" />
+        <activity
+            android:name=".Produk_makanan"
+            android:exported="false" />
         <activity
             android:name=".Produk_saya"
             android:exported="false" />

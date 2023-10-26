@@ -79,7 +79,7 @@
                     app:endIconMode="password_toggle"
 
                     app:helperTextEnabled="true"
-                    app:helperText="Masukkan Password"
+                    app:helperText="Masukkan Kata Sandi"
                     app:helperTextTextColor="@android:color/holo_blue_dark"
                     >
 
@@ -119,7 +119,10 @@
                     android:textSize="@dimen/_15sdp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    />
+                    android:drawableLeft="@drawable/icon_google5"
+                    android:drawablePadding="8dp"
+                />
+
 
             </LinearLayout>
 

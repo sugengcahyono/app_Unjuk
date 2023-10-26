@@ -18,7 +18,7 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.TimeUnit;
 public class retrofitclient {
 
-    public static final String BASE_URL = "http://172.16.103.252/Web_Unjuk/"; // local
+    public static final String BASE_URL = "http://192.168.0.106/Web_Unjuk/"; // local
 
 //    public static final String BASE_URL = "http://172.16.106.67/arenafinder-web/"; // wifi
 

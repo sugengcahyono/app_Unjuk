@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 public class Profile extends Fragment {
 
-    // ... (kode yang sudah ada)
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,6 +22,7 @@ public class Profile extends Fragment {
         TextView nama = (TextView) view.findViewById(R.id.text);
         Button editprofil = (Button) view.findViewById(R.id.btn_EditProfil); // Menghubungkan tombol dengan kode Java
         Button Dataumkm = (Button) view.findViewById(R.id.btn_Dataumkm);
+        Button produksaya = (Button) view.findViewById(R.id.btn_produksaya);
         // Menambahkan aksi ketika tombol diklik
         editprofil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +37,14 @@ public class Profile extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DataUmkm.class); // Ganti EditProfile dengan nama Activity atau Fragment yang sesuai
+                startActivity(intent);
+            }
+        });
+        produksaya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Tambahkan kode untuk berpindah ke EditProfile ketika tombol diklik
+                Intent intent = new Intent(getActivity(), Produk_saya.class); // Ganti EditProfile dengan nama Activity atau Fragment yang sesuai
                 startActivity(intent);
             }
         });

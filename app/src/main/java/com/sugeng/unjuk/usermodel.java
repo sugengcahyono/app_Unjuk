@@ -22,13 +22,15 @@ public class usermodel {
         @SerializedName("alamat_user")
         private String Alamat_user;
         @Expose
-        @SerializedName("no.telp_user")
+        @SerializedName("notelp_user")
         private String notelp_user;
         @Expose
         @SerializedName("user_foto")
         private String userfoto;
 
-        public usermodel(String idakun, String email, String pass, String namauser, String alamatuser, String notelpuser, String userfoto) {
+        public usermodel(String idakun, String email, String pass,
+                         String namauser, String alamatuser,
+                         String notelpuser, String userfoto) {
             this.idakun = idakun;
             this.Email = email;
             this.Password = pass;
@@ -38,61 +40,60 @@ public class usermodel {
             this.userfoto = userfoto;
         }
 
-        public String getIdakun() {
-            return idakun;
-        }
-
-        public void setIdakun(String idakun) {
-            this.idakun = idakun;
-        }
-
-        public String getAlamat_user() {
-            return Email;
-        }
-
-        public void setAlamat_user(String alamat_user) {
-            this.Email = alamat_user;
-        }
-
-        public String getEmail() {
-            return Password;
-        }
-
-        public void setEmail(String email) {
-            this.Password = email;
-        }
-
-        public String getNama_user() {
-            return nama_user;
-        }
-
-        public void setNama_user(String nama_user) {
-            this.nama_user = nama_user;
-        }
-
-        public String getPassword() {
-            return Alamat_user;
-        }
-
-        public void setPassword(String password) {
-            this.Alamat_user = password;
-        }
-
-        public String getNotelp_user() {
-            return notelp_user;
-        }
-
-        public void setNotelp_user(String notelp_user) {
-            this.notelp_user = notelp_user;
-        }
-
-
-        public String getUserfoto() {
-            return userfoto;
-        }
-
-        public void setUserfoto(String userfoto) {
-            this.userfoto = userfoto;
-        }
+    public String getIdakun() {
+        return idakun;
     }
+
+    public void setIdakun(String idakun) {
+        this.idakun = idakun;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public String getNama_user() {
+        return nama_user;
+    }
+
+    public void setNama_user(String nama_user) {
+        this.nama_user = nama_user;
+    }
+
+    public String getAlamat_user() {
+        return Alamat_user;
+    }
+
+    public void setAlamat_user(String alamat_user) {
+        Alamat_user = alamat_user;
+    }
+
+    public String getNotelp_user() {
+        return notelp_user;
+    }
+
+    public void setNotelp_user(String notelp_user) {
+        this.notelp_user = notelp_user;
+    }
+
+    public String getUserfoto() {
+        return userfoto;
+    }
+
+    public void setUserfoto(String userfoto) {
+        this.userfoto = userfoto;
+    }
+}
 

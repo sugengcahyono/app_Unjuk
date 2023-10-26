@@ -130,7 +130,7 @@
                     >
 
                     <EditText
-                        android:id="@+id/pass"
+                        android:id="@+id/edittext_pass"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_centerVertical="true"
@@ -151,7 +151,7 @@
                     app:boxBackgroundColor="@color/white">
 
                     <EditText
-                        android:id="@+id/edittext_no.hpuser"
+                        android:id="@+id/edittext_nohpuser"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_centerVertical="true"
@@ -183,7 +183,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/Daftar"
+                    android:id="@+id/btn_Daftar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"

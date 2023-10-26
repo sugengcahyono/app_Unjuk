@@ -143,6 +143,12 @@ public class GoogleUsers {
         }
     }
 
+    public String getEmail() {
+        if (account != null) {
+            return account.getEmail();
+        }
+        return null;
+    }
 }
 
 
