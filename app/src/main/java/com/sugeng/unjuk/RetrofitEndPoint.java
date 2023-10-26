@@ -41,6 +41,12 @@ public interface RetrofitEndPoint {
             @Field("email") String email,
             @Field("password") String password
     );
+    @FormUrlEncoded
+    @POST("Dataprofil.php")
+    Call<userrespons> Profil (
+            @Field("id_akun") String idakun
+
+    );
 
     @FormUrlEncoded
     @POST("Dataumkm.php")
@@ -75,6 +81,29 @@ public interface RetrofitEndPoint {
             @Field("user_foto") String userfoto,
             @Field("Kode_OTP") String kodeotp,
             @Field("Level") String level
+
+    );
+    @FormUrlEncoded
+    @POST("Produk.php")
+    Call<dataprodukrespons> Produk_umkm (
+            @Field("id_umkm") String idumkm
+    );
+
+    @FormUrlEncoded
+    @POST("upload_produk.php")
+    Call<dataprodukrespons> btn_uploadproduk (
+            @Field("id_produk") String id_produk,
+            @Field("nama_produk") String namaproduk,
+            @Field("harga_produk") String hargaproduk,
+            @Field("kategori_produk") String kategoriproduk,
+            @Field("deskripsi_produk") String deskripsiproduk,
+            @Field("pirt_produk") String pirtproduk,
+            @Field("bpom_produk") String bpomproduk,
+            @Field("idhalal_produk") String idhalalproduk,
+            @Field("gambar_produk1") String gambarproduk1,
+            @Field("gambar_produk2") String gambarproduk2,
+            @Field("gambar_produk3") String gambarproduk3,
+            @Field("id_umkm") String idumkm
 
     );
 }

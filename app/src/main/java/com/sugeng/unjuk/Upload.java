@@ -43,6 +43,10 @@ public class Upload extends Fragment {
     private int uploadedImageCount = 0;
     private String[] pilihankategori = {"Makanan", "Minuman", "Kerajinan", "Jasa"};
     private ImageView selectedImageView; // Menyimpan ImageView yang diklik
+    private Button  uploadproduk;
+    private ImageView Image1, Image2, Image3;
+    private EditText namaproduk, hargaproduk, deskripsiproduk, pirtproduk,bpomproduk, idhalalproduk;
+
 
     public Upload() {
         // Required empty public constructor
@@ -51,6 +55,87 @@ public class Upload extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_upload, container, false);
+
+        Image1 = view.findViewById(R.id.uploadfoto1);
+        Image2 = view.findViewById(R.id.uploadfoto2);
+        Image3 = view.findViewById(R.id.uploadfoto3);
+        namaproduk = view.findViewById((R.id.input_namaproduk));
+        hargaproduk = view.findViewById(R.id.input_hargaproduk);
+        btnkategori = view.findViewById(R.id.btnkategori);
+        deskripsiproduk = view.findViewById(R.id.input_deskripsiproduk);
+        pirtproduk = view.findViewById(R.id.input_pirtproduk);
+        bpomproduk = view.findViewById(R.id.input_bpomproduk);
+        idhalalproduk = view.findViewById(R.id.input_idhalalproduk);
+
+        retrofitclient.getConnection().create(RetrofitEndPoint.class).Produk_umkm("3").enqueue(new Callback<dataprodukrespons>() {
+            @Override
+            public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
+                if(response.body() !=null && response.body().getStatus().equalsIgnoreCase("succes")){
+                    produkmodel produk = response.body().getData();
+
+                    namaproduk.setText(produk.getNamaproduk());
+                    hargaproduk.setText(produk.getHargaproduk());
+                    kategoriButton.setText(produk.getKategoriproduk());
+                    deskripsiproduk.setText(produk.getDeskripsiproduk());
+                    pirtproduk.setText(produk.getPirtproduk());
+                    bpomproduk.setText(produk.getBpomproduk());
+                    idhalalproduk.setText(produk.getIdhalalproduk());
+//                    Image1.setText(produk.getGambarproduk1());
+//                    Image2.setText(produk.getGambarproduk2());
+//                    Image3.setText(produk.getGambarproduk3());
+
+                } else {
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<dataprodukrespons> call, Throwable t) {
+
+            }
+        });
+
+        uploadproduk = view.findViewById(R.id.Btnupload);
+        uploadproduk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                retrofitclient.getConnection().create(RetrofitEndPoint.class)
+                        .btn_uploadproduk(
+                                "", namaproduk.getText().toString(),hargaproduk.getText().toString(),
+                                kategoriButton.getText().toString(),deskripsiproduk.getText().toString(),
+                                pirtproduk.getText().toString(), bpomproduk.getText().toString(),
+                                idhalalproduk.getText().toString(),"",
+                                "","", "3"
+                        ).enqueue(new Callback<dataprodukrespons>() {
+                            @Override
+                            public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
+                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                                    Toast.makeText(requireContext(), "Data Berhasil diupload", Toast.LENGTH_SHORT).show();
+                                    namaproduk.setText("");
+                                    hargaproduk.setText("");
+                                    jenisusahaButton.setText("");
+                                    pirtproduk.setText("");
+                                    kategoriButton.setText("");
+                                    deskripsiproduk.setText("");
+                                    bpomproduk.setText("");
+                                    idhalalproduk.setText("");
+                                }else {
+                                    Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<dataprodukrespons> call, Throwable t) {
+
+                            }
+                        });
+
+            }
+        });
+
+
+
 
         inputnamaumkm = view.findViewById(R.id.input_namaumkm);
         inputnibumkm = view.findViewById(R.id.input_nibumkm);
@@ -97,9 +182,9 @@ public class Upload extends Fragment {
                             @Override
                             public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {
                                 if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
-//                                    Toast.makeText(Upload.this, "Data behasi diedit", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(requireContext(), "Data Berhasil Disimpan", Toast.LENGTH_SHORT).show();
                                 }else {
-//                                    Toast.makeText(Upload.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
 

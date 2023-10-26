@@ -53,12 +53,15 @@ public class DataUmkm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_umkm);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("prefLogin", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
         inputnamaumkm = findViewById(R.id.input_namaumkm);
         inputnibumkm = findViewById(R.id.input_nibumkm);
         inputnohpumkm = findViewById(R.id.input_nohpumkm);
         inputalamatumkm = findViewById(R.id.input_alamatumkm);
 
-        retrofitclient.getConnection().create(RetrofitEndPoint.class).Data_umkm("13").enqueue(new Callback<dataumkmrespons>() {
+        retrofitclient.getConnection().create(RetrofitEndPoint.class).Data_umkm(sharedPreferences.getString("id_akun", "")).enqueue(new Callback<dataumkmrespons>() {
             @Override
             public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {
                 if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
@@ -91,9 +94,9 @@ public class DataUmkm extends AppCompatActivity {
             public void onClick(View view) {
                 retrofitclient.getConnection().create(RetrofitEndPoint.class)
                         .Btn_simpanumkm(
-                                "3", inputnamaumkm.getText().toString(), jenisusahaButton.getText().toString(),
+                               "", inputnamaumkm.getText().toString(), jenisusahaButton.getText().toString(),
                                 inputnibumkm.getText().toString(), inputnohpumkm.getText().toString(), kecamatanButton.getText().toString(),
-                                inputalamatumkm.getText().toString(), "", "13"
+                                inputalamatumkm.getText().toString(), "", sharedPreferences.getString("id_akun", "")
                         ).enqueue(new Callback<dataumkmrespons>() {
                             @Override
                             public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {

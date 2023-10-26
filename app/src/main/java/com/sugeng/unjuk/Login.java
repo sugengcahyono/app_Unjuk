@@ -91,12 +91,13 @@ public class Login extends AppCompatActivity {
                             public void onResponse(Call<userrespons> call, Response<userrespons> response) {
                                 if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
                                     usermodel user = response.body().getData();
-                                    editor.putString("idakun", user.getIdakun());
+                                    editor.putString("id_akun", user.getIdakun());
                                     editor.putString("email", user.getEmail());
                                     editor.putString("nama_user", user.getNama_user());
                                     editor.putString("alamat", user.getAlamat_user());
                                     editor.putString("no_telp",user.getNotelp_user());
                                     editor.putString("user_foto",user.getUserfoto());
+                                    editor.putString("id_umkm", user.getIdumkm());
                                     editor.apply();
 
                                     // Membuat Intent untuk membuka aktivitas berikutnya
@@ -178,10 +179,13 @@ public class Login extends AppCompatActivity {
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
 
                                         usermodel user = response.body().getData();
-                                        editor.putString("email", googleEmail);
+                                        editor.putString("id_akun", user.getIdakun());
+                                        editor.putString("email", user.getEmail());
                                         editor.putString("nama_user", user.getNama_user());
                                         editor.putString("alamat", user.getAlamat_user());
                                         editor.putString("no_telp",user.getNotelp_user());
+                                        editor.putString("user_foto",user.getUserfoto());
+                                        editor.putString("id_umkm", user.getIdumkm());
                                         editor.apply();
                                         // Login berhasil, lanjutkan ke aktivitas berikutnya
                                         Intent intent = new Intent(Login.this, MainActivity.class);

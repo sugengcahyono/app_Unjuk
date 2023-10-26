@@ -57,6 +57,7 @@ public class Edit_profil extends AppCompatActivity {
         String alamat = sharedPreferences.getString("alamat","");
         String notelp = sharedPreferences.getString("no_telp", "");
         String userfoto = sharedPreferences.getString("user_foto", "");
+        String idUmkm = sharedPreferences.getString("id_umkm", "");
 
 
         emailuser = findViewById(R.id.input_emailuser);
@@ -65,10 +66,33 @@ public class Edit_profil extends AppCompatActivity {
         alamatuser = findViewById(R.id.input_alamatuser);
         Fotoprofil = findViewById(R.id.foto_profil);
 
-       emailuser.setText(email);
+        emailuser.setText(email);
         namauser.setText(nama );
         notelpuser.setText(notelp);
         alamatuser.setText(alamat);
+
+        retrofitclient.getConnection().create(RetrofitEndPoint.class).Profil(sharedPreferences.getString("id_akun","")).enqueue(new Callback<userrespons>() {
+            @Override
+            public void onResponse(Call<userrespons> call, Response<userrespons> response) {
+                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                    usermodel profil = response.body().getData();
+
+                    emailuser.setText(profil.getEmail());
+                    namauser.setText(profil.getNama_user());
+                    notelpuser.setText(profil.getNotelp_user());
+                    alamatuser.setText(profil.getAlamat_user());
+//                    fotoProfil.setText(profil.getKecamatanumkm());
+
+                }else{
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<userrespons> call, Throwable t) {
+
+            }
+        });
 
 
 //Button simpan Profile
@@ -79,7 +103,7 @@ public class Edit_profil extends AppCompatActivity {
             public void onClick(View view) {
                 retrofitclient.getConnection().create(RetrofitEndPoint.class)
                         .Btn_simpanprofil(
-                                "",emailuser.getText().toString(),"",namauser.getText().toString(),
+                                sharedPreferences.getString("id_akun", ""),emailuser.getText().toString(),"",namauser.getText().toString(),
                                 alamatuser.getText().toString(),notelpuser.getText().toString(),
                                 "","",""
                         ).enqueue(new Callback<userrespons>() {

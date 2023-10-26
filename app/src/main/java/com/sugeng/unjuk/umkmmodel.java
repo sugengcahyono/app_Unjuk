@@ -21,6 +21,7 @@ public class umkmmodel {
     @Expose
     @SerializedName("notelp_umkm")
     private String notelpumkm;
+    @Expose
     @SerializedName("kecamatan_umkm")
     private String kecamatanumkm;
     @Expose

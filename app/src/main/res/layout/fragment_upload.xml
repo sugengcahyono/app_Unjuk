@@ -346,6 +346,7 @@
                >
 
                <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_namaproduk"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_centerVertical="true"
@@ -376,6 +377,7 @@
                >
 
                <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_hargaproduk"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_centerVertical="true"
@@ -407,7 +409,7 @@
                android:textColor="@color/black"
                android:textColorHint="@color/black"
                android:backgroundTint="@color/white"
-               android:text="Pilih Kategori"
+               android:hint="Pilih Kategori"
                android:textStyle="normal"
                android:drawableRight="@drawable/dropdown"
                android:gravity="center_vertical|start"
@@ -435,6 +437,7 @@
                >
 
                <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_deskripsiproduk"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_centerVertical="true"
@@ -457,6 +460,7 @@
                />
 
            <com.google.android.material.textfield.TextInputLayout
+
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                app:boxBackgroundColor="@color/white"
@@ -466,6 +470,7 @@
                >
 
                <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_pirtproduk"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_centerVertical="true"
@@ -488,6 +493,7 @@
                />
 
            <com.google.android.material.textfield.TextInputLayout
+
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                app:boxBackgroundColor="@color/white"
@@ -497,6 +503,7 @@
                >
 
                <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_bpomproduk"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_centerVertical="true"
@@ -528,6 +535,7 @@
                >
 
                <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_idhalalproduk"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_centerVertical="true"
