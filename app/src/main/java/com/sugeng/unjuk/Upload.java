@@ -1,7 +1,9 @@
 package com.sugeng.unjuk;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -47,6 +49,9 @@ public class Upload extends Fragment {
     private ImageView Image1, Image2, Image3;
     private EditText namaproduk, hargaproduk, deskripsiproduk, pirtproduk,bpomproduk, idhalalproduk;
 
+    SharedPreferences sharedPreferences;
+
+    SharedPreferences.Editor editor;
 
     public Upload() {
         // Required empty public constructor
@@ -55,6 +60,9 @@ public class Upload extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_upload, container, false);
+
+         sharedPreferences = getContext().getSharedPreferences("prefLogin", Context.MODE_PRIVATE);
+         editor = sharedPreferences.edit();
 
         Image1 = view.findViewById(R.id.uploadfoto1);
         Image2 = view.findViewById(R.id.uploadfoto2);
@@ -106,7 +114,7 @@ public class Upload extends Fragment {
                                 kategoriButton.getText().toString(),deskripsiproduk.getText().toString(),
                                 pirtproduk.getText().toString(), bpomproduk.getText().toString(),
                                 idhalalproduk.getText().toString(),"",
-                                "","", "3"
+                                "","", Upload.this.sharedPreferences.getString("id_umkm", "")
                         ).enqueue(new Callback<dataprodukrespons>() {
                             @Override
                             public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
@@ -136,13 +144,12 @@ public class Upload extends Fragment {
 
 
 
-
         inputnamaumkm = view.findViewById(R.id.input_namaumkm);
         inputnibumkm = view.findViewById(R.id.input_nibumkm);
         inputnohpumkm = view.findViewById(R.id.input_nohpumkm);
         inputalamatumkm = view.findViewById(R.id.input_alamatumkm);
 
-        retrofitclient.getConnection().create(RetrofitEndPoint.class).Data_umkm("13").enqueue(new Callback<dataumkmrespons>() {
+        retrofitclient.getConnection().create(RetrofitEndPoint.class).Data_umkm(sharedPreferences.getString("id_akun", "")).enqueue(new Callback<dataumkmrespons>() {
             @Override
             public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {
                 if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
@@ -174,10 +181,10 @@ public class Upload extends Fragment {
             @Override
             public void onClick(View view) {
                 retrofitclient.getConnection().create(RetrofitEndPoint.class)
-                        .Btn_simpanumkm(
-                                "3", inputnamaumkm.getText().toString(), jenisusahaButton.getText().toString(),
+                        .Btn_uploadumkm(
+                                "", inputnamaumkm.getText().toString(), jenisusahaButton.getText().toString(),
                                 inputnibumkm.getText().toString(), inputnohpumkm.getText().toString(), kecamatanButton.getText().toString(),
-                                inputalamatumkm.getText().toString(), "", "13"
+                                inputalamatumkm.getText().toString(), "", sharedPreferences.getString("id_akun","")
                         ).enqueue(new Callback<dataumkmrespons>() {
                             @Override
                             public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {

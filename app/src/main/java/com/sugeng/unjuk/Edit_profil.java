@@ -84,7 +84,7 @@ public class Edit_profil extends AppCompatActivity {
 //                    fotoProfil.setText(profil.getKecamatanumkm());
 
                 }else{
-
+                    Toast.makeText(Edit_profil.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 

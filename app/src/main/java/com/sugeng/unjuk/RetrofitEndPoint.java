@@ -68,6 +68,20 @@ public interface RetrofitEndPoint {
             @Field("id_akun") String idakun
 
     );
+    @FormUrlEncoded
+    @POST("Buttonuploaddataumkm.php")
+    Call<dataumkmrespons> Btn_uploadumkm (
+            @Field("id_umkm") String idumkm,
+            @Field("nama_umkm") String namaumkm,
+            @Field("Jenis_usahaumkm") String jenisusahaumkm,
+            @Field("Nib_umkm") String nibumkm,
+            @Field("notelp_umkm") String notelpumkm,
+            @Field("kecamatan_umkm") String kecamatanumkm,
+            @Field("alamat_umkm") String alamatumkm,
+            @Field("umkm_foto") String umkmfoto,
+            @Field("id_akun") String idakun
+
+    );
 
     @FormUrlEncoded
     @POST("Buttonsimpaneditprofil.php")
@@ -84,7 +98,7 @@ public interface RetrofitEndPoint {
 
     );
     @FormUrlEncoded
-    @POST("Produk.php")
+    @POST("Produkumkm.php")
     Call<dataprodukrespons> Produk_umkm (
             @Field("id_umkm") String idumkm
     );

@@ -97,7 +97,8 @@ public class Login extends AppCompatActivity {
                                     editor.putString("alamat", user.getAlamat_user());
                                     editor.putString("no_telp",user.getNotelp_user());
                                     editor.putString("user_foto",user.getUserfoto());
-                                    editor.putString("id_umkm", user.getIdumkm());
+                                    editor.putString("id_umkm", response.body().getIdUmkm());
+                                    editor.putString("id_produk", user.getIdproduk());
                                     editor.apply();
 
                                     // Membuat Intent untuk membuka aktivitas berikutnya
@@ -185,7 +186,8 @@ public class Login extends AppCompatActivity {
                                         editor.putString("alamat", user.getAlamat_user());
                                         editor.putString("no_telp",user.getNotelp_user());
                                         editor.putString("user_foto",user.getUserfoto());
-                                        editor.putString("id_umkm", user.getIdumkm());
+                                        editor.putString("id_umkm", response.body().getIdUmkm());
+                                        editor.putString("id_produk", user.getIdproduk());
                                         editor.apply();
                                         // Login berhasil, lanjutkan ke aktivitas berikutnya
                                         Intent intent = new Intent(Login.this, MainActivity.class);

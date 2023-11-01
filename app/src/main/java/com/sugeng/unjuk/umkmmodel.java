@@ -101,16 +101,28 @@ public class umkmmodel {
         this.idakun = idakun;
     }
 
+    public String getIdproduk() {
+        return idproduk;
+    }
+
+    public void setIdproduk(String idproduk) {
+        this.idproduk = idproduk;
+    }
+
     @Expose
     @SerializedName("umkm_foto")
     private String umkmfoto;
     @Expose
     @SerializedName("id_akun")
     private String idakun;
+    @Expose
+    @SerializedName("id_produk")
+    private String idproduk;
+
 
     public umkmmodel(String idumkm, String namaumkm, String jenisuasahumkm,
                      String nib, String notelpumkm, String kecamatanumkm,
-                     String alamatumkm, String umkmfoto, String idakun) {
+                     String alamatumkm, String umkmfoto, String idakun, String idproduk) {
         this.idumkm = idumkm;
         this.namaumkm = namaumkm;
         this.jenisusahaumkm = jenisuasahumkm;
@@ -120,6 +132,7 @@ public class umkmmodel {
         this.alamatumkm = alamatumkm;
         this.umkmfoto = umkmfoto;
         this.idakun = idakun;
+        this.idproduk = idproduk;
     }
 
 }

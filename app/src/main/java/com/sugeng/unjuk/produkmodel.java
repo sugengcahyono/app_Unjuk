@@ -41,6 +41,9 @@ public class produkmodel {
     @Expose
     @SerializedName("id_umkm")
     private String idumkm;
+    @Expose
+    @SerializedName("id_akun")
+    private String idakun;
 
     public String getIdproduk() {
         return idproduk;
@@ -138,10 +141,18 @@ public class produkmodel {
         this.idumkm = idumkm;
     }
 
+    public String getIdakun() {
+        return idakun;
+    }
+
+    public void setIdakun(String idakun) {
+        this.idakun = idakun;
+    }
+
     public produkmodel(String idproduk, String namaproduk, String hargaproduk,
                        String kategoriproduk, String deskripsiproduk, String pirtproduk,
                        String bpomproduk, String idhalalproduk, String gambarproduk1,
-                       String gambarproduk2, String gambarproduk3, String idumkm) {
+                       String gambarproduk2, String gambarproduk3, String idumkm, String idakun) {
         this.idproduk = idproduk;
         this.namaproduk = namaproduk;
         this.hargaproduk = hargaproduk;
@@ -154,5 +165,6 @@ public class produkmodel {
         this.gambarproduk2 = gambarproduk2;
         this.gambarproduk3 = gambarproduk3;
         this.idumkm = idumkm;
+        this.idakun = idakun;
     }
 }

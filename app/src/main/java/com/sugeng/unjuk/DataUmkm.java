@@ -76,7 +76,7 @@ public class DataUmkm extends AppCompatActivity {
 
 
                 }else{
-
+                    Toast.makeText(DataUmkm.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -156,7 +156,9 @@ public class DataUmkm extends AppCompatActivity {
         // Mengatur button pilihan kecamatan
         kecamatanButton = findViewById(R.id.btnKecamatan);
         btnKecamatan = findViewById(R.id.btnKecamatan);
-        String[] pilihanKecamatan = {"Bagor", "Baron", "Berbek", "Gondang", "Jatikalen", "Kertosono", "Lengkong", "Loceret", "Nganjuk", "Ngetos", "Ngluyu", "Ngronggot", "Pace", "Patianrowo", "Prambon", "Rejoso", "Sawahan", "Sukomoro", "Tanjunganom", "Wilangan"};
+        String[] pilihanKecamatan = {"Bagor", "Baron", "Berbek", "Gondang", "Jatikalen", "Kertosono",
+                "Lengkong", "Loceret", "Nganjuk", "Ngetos", "Ngluyu", "Ngronggot", "Pace", "Patianrowo",
+                "Prambon", "Rejoso", "Sawahan", "Sukomoro", "Tanjunganom", "Wilangan"};
 
         // Mengatur onClickListener pada Button untuk menampilkan PopupMenu
         btnKecamatan.setOnClickListener(new View.OnClickListener() {
