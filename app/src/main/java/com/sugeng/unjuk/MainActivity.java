@@ -3,16 +3,16 @@ package com.sugeng.unjuk;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.sugeng.unjuk.Menu.Notifikasi;
+import com.sugeng.unjuk.Menu.Profile;
+import com.sugeng.unjuk.Menu.Upload;
+import com.sugeng.unjuk.Menu.dashboard;
+
 public class MainActivity extends AppCompatActivity {
 
         private BottomNavigationView bottomNavigationView;

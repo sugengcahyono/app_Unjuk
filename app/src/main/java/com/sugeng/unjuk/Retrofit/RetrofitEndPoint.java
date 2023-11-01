@@ -1,8 +1,13 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Retrofit;
+
+import com.sugeng.unjuk.Respons.dataprodukrespons;
+import com.sugeng.unjuk.Respons.dataumkmrespons;
+import com.sugeng.unjuk.Respons.userrespons;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RetrofitEndPoint {
@@ -119,5 +124,11 @@ public interface RetrofitEndPoint {
             @Field("gambar_produk3") String gambarproduk3,
             @Field("id_umkm") String idumkm
 
+    );
+
+    @FormUrlEncoded
+    @POST("AmbilProduk.php")
+    Call<dataprodukrespons> ambilproduk(
+            @Field("id_umkm") String idumkm
     );
 }

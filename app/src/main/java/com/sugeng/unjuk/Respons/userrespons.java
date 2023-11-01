@@ -1,10 +1,11 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Respons;
+
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.sugeng.unjuk.Model.usermodel;
 
-public class dataprodukrespons {
-
+public class userrespons {
 
     @Expose
     @SerializedName("status")
@@ -14,12 +15,17 @@ public class dataprodukrespons {
     private String message;
     @Expose
     @SerializedName("data")
-    private produkmodel data;
+    private usermodel data;
 
-    public dataprodukrespons(String status, String message, produkmodel data){
+    @Expose
+    @SerializedName("id_umkm")
+    private String idUmkm;
+
+    public userrespons(String status, String message, usermodel data, String idUmkm) {
         this.status = status;
         this.message = message;
         this.data = data;
+        this.idUmkm = idUmkm;
     }
 
     public String getStatus() {
@@ -38,14 +44,21 @@ public class dataprodukrespons {
         this.message = message;
     }
 
-    public produkmodel getData() {
+    public usermodel getData() {
         return data;
     }
 
-    public void setData(produkmodel data) {
+    public void setData(usermodel data) {
         this.data = data;
     }
 
+    public String getIdUmkm() {
+        return idUmkm;
+    }
 
-
+    public void setIdUmkm(String idUmkm) {
+        this.idUmkm = idUmkm;
+    }
 }
+
+

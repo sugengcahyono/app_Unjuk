@@ -1,4 +1,4 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Menu;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,6 +17,16 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
+
+import com.sugeng.unjuk.R;
+import com.sugeng.unjuk.Respons.dataprodukrespons;
+import com.sugeng.unjuk.Respons.dataumkmrespons;
+import com.sugeng.unjuk.Retrofit.RetrofitEndPoint;
+import com.sugeng.unjuk.Model.produkmodel;
+import com.sugeng.unjuk.Retrofit.retrofitclient;
+import com.sugeng.unjuk.Model.umkmmodel;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,7 +89,7 @@ public class Upload extends Fragment {
             @Override
             public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
                 if(response.body() !=null && response.body().getStatus().equalsIgnoreCase("succes")){
-                    produkmodel produk = response.body().getData();
+                    produkmodel produk = (produkmodel) response.body().getData().get(0);
 
                     namaproduk.setText(produk.getNamaproduk());
                     hargaproduk.setText(produk.getHargaproduk());

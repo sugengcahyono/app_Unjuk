@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/abuputih"
-    tools:context=".Notifikasi">
+    tools:context=".Menu.Notifikasi">
 
 
     <LinearLayout
@@ -81,62 +81,13 @@
             android:backgroundTint="@color/white"
             app:cornerRadius="@dimen/_7sdp"
             android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
-            android:text="Klinik UMKM Go Digital"
+            android:text="1. Klinik UMKM Go Digital \n2. Fasilitas Perizinan NIB/ PIRT/ Halal \n3. Desain Kemasan \n4. Market Hub \n5. Affiliate Program"
+            android:textSize="@dimen/_12sdp"
             android:textAlignment="textStart"
             android:textColor="@color/black"
             />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_fasilitasperizinan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:backgroundTint="@color/white"
-            app:cornerRadius="@dimen/_7sdp"
-            android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
-            android:text="Fasilitas Perizinan NIB/ PIRT/ Halal"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_designkemasan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:backgroundTint="@color/white"
-            app:cornerRadius="@dimen/_7sdp"
-            android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
-            android:text="Design Kemasan"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_markethub"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:backgroundTint="@color/white"
-            app:cornerRadius="@dimen/_7sdp"
-            android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
-            android:text="Market Hub"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_affiliateprogam"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:backgroundTint="@color/white"
-            app:cornerRadius="@dimen/_7sdp"
-            android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
-            android:text="Affiliate Program"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            />
 
 
 <!--        <androidx.cardview.widget.CardView-->

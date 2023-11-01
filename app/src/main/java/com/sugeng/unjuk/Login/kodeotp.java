@@ -1,4 +1,4 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.sugeng.unjuk.R;
 
 public class kodeotp extends AppCompatActivity {
 

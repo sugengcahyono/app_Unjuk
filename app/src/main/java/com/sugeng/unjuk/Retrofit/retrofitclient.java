@@ -1,4 +1,4 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Retrofit;
 
 
 import androidx.annotation.NonNull;
@@ -17,8 +17,8 @@ import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 public class retrofitclient {
-
-    public static final String BASE_URL = "http://172.16.103.142/Web_Unjuk/"; // local
+// patah patah anydesk e ambek suara ku ga kurngu ta? suara u ga mlebu i,anydesk lancar chat wa ae
+    public static final String BASE_URL = "http://192.168.0.106/WEB_UNJUK1/"; // local
 
 //    public static final String BASE_URL = "http://172.16.106.67/arenafinder-web/"; // wifi
 

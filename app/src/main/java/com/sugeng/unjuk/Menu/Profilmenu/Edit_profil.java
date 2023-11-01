@@ -1,4 +1,4 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Menu.Profilmenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,12 +9,10 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import androidx.appcompat.widget.PopupMenu;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -22,6 +20,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.sugeng.unjuk.Model.usermodel;
+import com.sugeng.unjuk.R;
+import com.sugeng.unjuk.Respons.userrespons;
+import com.sugeng.unjuk.Retrofit.RetrofitEndPoint;
+import com.sugeng.unjuk.Retrofit.retrofitclient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -110,7 +114,7 @@ public class Edit_profil extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<userrespons> call, Response<userrespons> response) {
                                 if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
-                                    Toast.makeText(Edit_profil.this, "Data behasi diedit", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Edit_profil.this, "Data behasil diedit", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(Edit_profil.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 }

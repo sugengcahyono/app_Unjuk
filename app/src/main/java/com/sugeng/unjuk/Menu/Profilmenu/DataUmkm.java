@@ -1,9 +1,8 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Menu.Profilmenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -12,7 +11,6 @@ import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,6 +21,12 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.sugeng.unjuk.Model.umkmmodel;
+import com.sugeng.unjuk.R;
+import com.sugeng.unjuk.Respons.dataumkmrespons;
+import com.sugeng.unjuk.Retrofit.RetrofitEndPoint;
+import com.sugeng.unjuk.Retrofit.retrofitclient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -101,7 +105,7 @@ public class DataUmkm extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {
                                 if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
-                                    Toast.makeText(DataUmkm.this, "Data behasi diedit", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(DataUmkm.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 }else {
                                     Toast.makeText(DataUmkm.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 }

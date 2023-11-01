@@ -1,20 +1,19 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Menu.Profilmenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
-public class Produk_saya extends AppCompatActivity {
+import com.sugeng.unjuk.R;
+
+public class Ganti_katasandi extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_produk_saya);
+        setContentView(R.layout.activity_ganti_katasandi);
 
         ImageButton backButton = findViewById(R.id.btnBack);
         backButton.setOnClickListener(new View.OnClickListener() {

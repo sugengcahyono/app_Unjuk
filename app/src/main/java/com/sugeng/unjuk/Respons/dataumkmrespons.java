@@ -1,10 +1,12 @@
-package com.sugeng.unjuk;
-
+package com.sugeng.unjuk.Respons;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.sugeng.unjuk.Model.umkmmodel;
 
-public class userrespons {
+public class dataumkmrespons {
+
+
 
     @Expose
     @SerializedName("status")
@@ -14,17 +16,12 @@ public class userrespons {
     private String message;
     @Expose
     @SerializedName("data")
-    private usermodel data;
+    private umkmmodel data;
 
-    @Expose
-    @SerializedName("id_umkm")
-    private String idUmkm;
-
-    public userrespons(String status, String message, usermodel data, String idUmkm) {
+    public dataumkmrespons(String status, String message, umkmmodel data){
         this.status = status;
         this.message = message;
         this.data = data;
-        this.idUmkm = idUmkm;
     }
 
     public String getStatus() {
@@ -43,21 +40,13 @@ public class userrespons {
         this.message = message;
     }
 
-    public usermodel getData() {
+    public umkmmodel getData() {
         return data;
     }
 
-    public void setData(usermodel data) {
+    public void setData(umkmmodel data) {
         this.data = data;
     }
 
-    public String getIdUmkm() {
-        return idUmkm;
-    }
 
-    public void setIdUmkm(String idUmkm) {
-        this.idUmkm = idUmkm;
-    }
 }
-
-

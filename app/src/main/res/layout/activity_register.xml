@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register"
+    tools:context=".Login.Register"
     android:background="@drawable/logobaru"
     >
 
@@ -125,7 +125,7 @@
                     app:endIconMode="password_toggle"
 
                     app:helperTextEnabled="true"
-                    app:helperText="Masukkan Password"
+                    app:helperText="Masukkan Kata Sandi"
                     app:helperTextTextColor="@android:color/holo_blue_dark"
                     >
 
@@ -134,7 +134,39 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_centerVertical="true"
-                        android:hint="Password"
+                        android:hint="Kata Sandi"
+                        android:textSize="@dimen/_12sdp"
+                        android:inputType="textPassword"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textinputlayoutkonfirmasisandi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:boxBackgroundColor="@color/white"
+
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+
+                    app:endIconMode="password_toggle"
+
+                    app:helperTextEnabled="true"
+                    app:helperText="Masukkan Kata Sandi"
+                    app:helperTextTextColor="@android:color/holo_blue_dark"
+                    >
+
+                    <EditText
+                        android:id="@+id/edittext_passkonfirmasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_centerVertical="true"
+                        android:hint="Konfirmasi Kata Sandi"
                         android:textSize="@dimen/_12sdp"
                         android:inputType="textPassword"
                         android:textColor="@color/black"

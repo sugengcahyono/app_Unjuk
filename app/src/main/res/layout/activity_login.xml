@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
+    tools:context=".Login.Login"
     >
 
     <ScrollView
@@ -90,6 +90,7 @@
                         android:layout_centerVertical="true"
                         android:hint="Password"
                         android:textSize="@dimen/_12sdp"
+                        android:maxLength="20"
                         android:inputType="textPassword"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"

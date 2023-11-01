@@ -1,9 +1,7 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Login;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +13,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.textfield.TextInputLayout;
+import com.sugeng.unjuk.GoogleUsers;
+import com.sugeng.unjuk.MainActivity;
+import com.sugeng.unjuk.Model.usermodel;
+import com.sugeng.unjuk.R;
+import com.sugeng.unjuk.Respons.userrespons;
+import com.sugeng.unjuk.Retrofit.RetrofitEndPoint;
+import com.sugeng.unjuk.Retrofit.retrofitclient;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import retrofit2.Call;
@@ -101,6 +107,7 @@ public class Login extends AppCompatActivity {
                                     editor.putString("id_produk", user.getIdproduk());
                                     editor.apply();
 
+                                    Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                     // Membuat Intent untuk membuka aktivitas berikutnya
                                     String nama = txtEmail.getText().toString();
                                     Intent intent = new Intent(Login.this, MainActivity.class);
@@ -192,6 +199,7 @@ public class Login extends AppCompatActivity {
                                         // Login berhasil, lanjutkan ke aktivitas berikutnya
                                         Intent intent = new Intent(Login.this, MainActivity.class);
                                         startActivity(intent);
+                                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                     } else {
                                         // Email tidak ditemukan di database, beri tahu pengguna
                                         Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();

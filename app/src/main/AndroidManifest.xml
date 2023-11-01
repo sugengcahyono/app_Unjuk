@@ -17,7 +17,7 @@
         android:theme="@style/Theme.UNjuk"
         tools:targetApi="31">
         <activity
-            android:name=".Konfirmasi_password_baru"
+            android:name=".Login.Konfirmasi_password_baru"
             android:exported="false" />
         <activity
             android:name=".Produk_klik"
@@ -38,22 +38,22 @@
             android:name=".Produk_makanan"
             android:exported="false" />
         <activity
-            android:name=".Produk_saya"
+            android:name=".Menu.Profilmenu.Ganti_katasandi"
             android:exported="false" />
         <activity
-            android:name=".DataUmkm"
+            android:name=".Menu.Profilmenu.DataUmkm"
             android:exported="false" />
         <activity
-            android:name=".Edit_profil"
+            android:name=".Menu.Profilmenu.Edit_profil"
             android:exported="false" />
         <activity
-            android:name=".kodeotp"
+            android:name=".Login.kodeotp"
             android:exported="false" />
         <activity
-            android:name=".LupaPassword"
+            android:name=".Login.LupaPassword"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".Login.Register"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -70,7 +70,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".Login.Login"
             android:exported="false" />
     </application>
 

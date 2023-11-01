@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/menu_dashboard_item"
-      android:title="Beranda"
-      android:icon="@drawable/baseline_home_24"
+      android:title="Produk"
+      android:icon="@drawable/outline_shopping_bag_24"
       />
     <item android:id="@+id/menu_upload_item"
         android:title="Upload"
@@ -14,7 +14,7 @@
         android:icon="@drawable/layanan"
         />
     <item android:id="@+id/menu_profile_item"
-        android:title="Profile"
+        android:title="Profil"
         android:icon="@drawable/baseline_person_24"
         />
 </menu>

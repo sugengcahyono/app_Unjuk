@@ -1,10 +1,13 @@
-package com.sugeng.unjuk;
+package com.sugeng.unjuk.Respons;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.sugeng.unjuk.Model.produkmodel;
 
-public class dataumkmrespons {
+import java.util.ArrayList;
+import java.util.List;
 
+public class dataprodukrespons {
 
 
     @Expose
@@ -15,9 +18,9 @@ public class dataumkmrespons {
     private String message;
     @Expose
     @SerializedName("data")
-    private umkmmodel data;
+    private ArrayList<produkmodel> data;
 
-    public dataumkmrespons(String status, String message, umkmmodel data){
+    public dataprodukrespons(String status, String message, ArrayList<produkmodel> data) {
         this.status = status;
         this.message = message;
         this.data = data;
@@ -39,13 +42,11 @@ public class dataumkmrespons {
         this.message = message;
     }
 
-    public umkmmodel getData() {
+    public ArrayList<produkmodel> getData() {
         return data;
     }
 
-    public void setData(umkmmodel data) {
+    public void setData(ArrayList<produkmodel> data) {
         this.data = data;
     }
-
-
 }

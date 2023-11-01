@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Profile">
+    tools:context=".Menu.Profile">
 
     <TextView
         android:gravity="center"
@@ -39,6 +39,7 @@
 
            />
         <TextView
+            android:id="@+id/text_namauser"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_5sdp"
@@ -49,7 +50,7 @@
 
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/text_email"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="@dimen/_5sdp"
@@ -77,6 +78,8 @@
                 android:drawableLeft="@drawable/baseline_create_24"
                 android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
                 android:text="Edit Profil"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 />
@@ -91,20 +94,24 @@
                 android:drawableLeft="@drawable/baseline_storefront_24"
                 android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
                 android:text="Data UMKM"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
 
                 />
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_produksaya"
+                android:id="@+id/btn_Gantikatasandi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:backgroundTint="@color/white"
                 app:cornerRadius="@dimen/_7sdp"
-                android:drawableLeft="@drawable/outline_shopping_bag_24"
+                android:drawableLeft="@drawable/baseline_key_24"
                 android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
-                android:text="Produk Saya"
+                android:text="Ganti Kata Sandi"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
 
@@ -119,6 +126,8 @@
                 android:drawableLeft="@drawable/baseline_output_24"
                 android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
                 android:text="Keluar"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
 
