@@ -102,6 +102,15 @@ public interface RetrofitEndPoint {
             @Field("Level") String level
 
     );
+
+    @FormUrlEncoded
+    @POST("Updatephotoprofil.php")
+    Call<userrespons> Update_profil (
+
+            @Field("email") String emailuser,
+            @Field("photo") String userfoto
+
+    );
     @FormUrlEncoded
     @POST("Produkumkm.php")
     Call<dataprodukrespons> Produk_umkm (
@@ -130,5 +139,11 @@ public interface RetrofitEndPoint {
     @POST("AmbilProduk.php")
     Call<dataprodukrespons> ambilproduk(
             @Field("id_umkm") String idumkm
+    );
+
+    @FormUrlEncoded
+    @POST("Ambildataproduk.php")
+    Call<dataprodukrespons> ambildataproduk(
+            @Field("id_produk") String idproduk
     );
 }

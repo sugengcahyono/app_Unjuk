@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Produk_EditProduk">
+    tools:context=".Menu.Profilmenu.Produk_EditProduk">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,10 +55,60 @@
                 android:orientation="vertical"
                 android:padding="@dimen/_8sdp">
 
+                <!--           upload foto-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:background="@color/abuputih"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/uploadfoto1"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_weight="1"
+                        android:src="@drawable/add_photo"
+                        android:scaleType="centerInside"
+                        android:adjustViewBounds="true"
+                        android:padding="@dimen/_5sdp"
+                        android:background="@color/white"
+                        />
+
+                    <ImageView
+                        android:id="@+id/uploadfoto2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:src="@drawable/add_photo"
+                        android:scaleType="centerInside"
+                        android:adjustViewBounds="true"
+                        android:padding="@dimen/_5sdp"
+                        android:background="@color/white"
+                        />
+
+                    <ImageView
+                        android:id="@+id/uploadfoto3"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_weight="1"
+                        android:src="@drawable/add_photo"
+                        android:scaleType="centerInside"
+                        android:adjustViewBounds="true"
+                        android:padding="@dimen/_5sdp"
+                        android:background="@color/white"
+                        />
+                </LinearLayout>
+
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/_35sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:paddingHorizontal="@dimen/_11sdp"
                     android:text="Nama Produk"
                     android:textSize="@dimen/_14sdp"
@@ -76,6 +126,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_namaproduk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -106,6 +157,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_hargaproduk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -127,26 +179,23 @@
                     android:textStyle="bold"
                     />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnkategori"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:boxBackgroundColor="@color/white"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:textSize="@dimen/_12sdp"
+                    app:cornerRadius="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:backgroundTint="@color/white"
+                    android:hint="Pilih Kategori"
+                    android:textStyle="normal"
+                    android:drawableRight="@drawable/dropdown"
+                    android:gravity="center_vertical|start"
                     android:paddingHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    app:hintEnabled="false"
-                    >
+                    />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:textSize="@dimen/_12sdp"
-
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -168,6 +217,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_deskripsiproduk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -190,6 +240,7 @@
                     />
 
                 <com.google.android.material.textfield.TextInputLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:boxBackgroundColor="@color/white"
@@ -199,6 +250,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_pirtproduk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -221,6 +273,7 @@
                     />
 
                 <com.google.android.material.textfield.TextInputLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:boxBackgroundColor="@color/white"
@@ -230,6 +283,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_bpomproduk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -261,6 +315,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_idhalalproduk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -279,7 +334,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_50sdp"
                     android:backgroundTint="@color/blue"
-                    android:text="Simpan"
+                    android:text="Upload"
                     android:textSize="@dimen/_15sdp"
                     android:textStyle="bold"
                     android:textColor="@color/white"

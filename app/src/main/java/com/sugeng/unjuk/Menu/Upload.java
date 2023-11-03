@@ -190,6 +190,7 @@ public class Upload extends Fragment {
         btnsimpandataumkm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 retrofitclient.getConnection().create(RetrofitEndPoint.class)
                         .Btn_uploadumkm(
                                 "", inputnamaumkm.getText().toString(), jenisusahaButton.getText().toString(),
@@ -334,13 +335,9 @@ public class Upload extends Fragment {
     }
 
     private void handleImageViewClick(ImageView imageView) {
-        if (uploadedImageCount < 3) {
-            // Simpan ImageView yang diklik
-            selectedImageView = imageView;
-            openGallery();
-        } else {
-            Toast.makeText(requireContext(), "Maksimum 3 foto yang dapat diunggah.", Toast.LENGTH_SHORT).show();
-        }
+        // Simpan ImageView yang diklik
+        selectedImageView = imageView;
+        openGallery();
     }
 
     private void openGallery() {
@@ -355,8 +352,8 @@ public class Upload extends Fragment {
             if (selectedImageView != null) {
                 Uri imageUri = data.getData();
                 selectedImageView.setImageURI(imageUri);
-                uploadedImageCount++;
             }
         }
     }
+
 }

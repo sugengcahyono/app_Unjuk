@@ -1,6 +1,7 @@
 package com.sugeng.unjuk.Menu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sugeng.unjuk.Menu.Profilmenu.Produk_EditProduk;
 import com.sugeng.unjuk.Menu.Profilmenu.Recyclerview_produk;
 import com.sugeng.unjuk.Model.produkmodel;
 import com.sugeng.unjuk.R;
@@ -41,9 +43,6 @@ public class dashboard extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences("prefLogin", Context.MODE_PRIVATE);
         String id_umkm = sharedPreferences.getString("id_umkm","");
 
-
-
-
         RecyclerView recyclerView = view.findViewById(R.id.viewproduk);
 
         RetrofitEndPoint apiRequestData = retrofitclient.getConnection().create(RetrofitEndPoint.class);
@@ -59,7 +58,7 @@ public class dashboard extends Fragment {
                     if(list != null) {
 
                         data.addAll(list);
-                        Recyclerview_produk adapter = new Recyclerview_produk(response.body().getData());
+                        Recyclerview_produk adapter = new Recyclerview_produk(response.body().getData(),getContext());
                         recyclerView.setAdapter(adapter);
                     }
                 }
@@ -68,6 +67,22 @@ public class dashboard extends Fragment {
             @Override
             public void onFailure(Call<dataprodukrespons> call, Throwable t) {
                 t.printStackTrace();
+            }
+        });
+
+        Recyclerview_produk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 SharedPreferences prefproduk = getActivity().getSharedPreferences("prefProduk", Context.MODE_PRIVATE);
+                String idproduk = prefproduk.getString("id_produk","");
+                String namaproduk = prefproduk.getString("nama_produk", "kosong");
+
+
+                Intent buka = new Intent(getActivity(), Produk_EditProduk.class);
+
+                buka.putExtra("id_produk", idproduk);
+                buka.putExtra("nama_produk",namaproduk);
+                startActivity(buka);
             }
         });
         // Inflate the layout for this fragment

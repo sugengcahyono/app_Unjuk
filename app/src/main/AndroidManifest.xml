@@ -26,7 +26,7 @@
             android:name=".Notifikasi_Klik"
             android:exported="false" />
         <activity
-            android:name=".Produk_EditProduk"
+            android:name=".Menu.Profilmenu.Produk_EditProduk"
             android:exported="false" />
         <activity
             android:name=".Produk_Kerajinan"

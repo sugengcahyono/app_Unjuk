@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,11 +22,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.sugeng.unjuk.Model.usermodel;
 import com.sugeng.unjuk.R;
 import com.sugeng.unjuk.Respons.userrespons;
 import com.sugeng.unjuk.Retrofit.RetrofitEndPoint;
 import com.sugeng.unjuk.Retrofit.retrofitclient;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,18 +37,15 @@ import retrofit2.Response;
 
 public class Edit_profil extends AppCompatActivity {
 
-//    private Button jenisKelaminButton; // Button untuk menampilkan pilihan jenis kelamin
-//    private Button btnJenisKelamin; // Button untuk menampilkan jenis kelamin yang dipilih
 
     private ImageView fotoProfil;
     private static final int PICK_IMAGE = 1;
-    private Uri imageUri;
+    private Uri uri;
 
-    private EditText namauser, notelpuser,alamatuser;
+    private EditText namauser, notelpuser, alamatuser;
     private TextView emailuser;
     private ImageView Fotoprofil;
     private Button btnsimpanprofile;
-
 
 
     @Override
@@ -57,8 +58,8 @@ public class Edit_profil extends AppCompatActivity {
 
         String idakun = sharedPreferences.getString("idakun", "");
         String email = sharedPreferences.getString("email", "");
-        String nama = sharedPreferences.getString("nama_user","");
-        String alamat = sharedPreferences.getString("alamat","");
+        String nama = sharedPreferences.getString("nama_user", "");
+        String alamat = sharedPreferences.getString("alamat", "");
         String notelp = sharedPreferences.getString("no_telp", "");
         String userfoto = sharedPreferences.getString("user_foto", "");
         String idUmkm = sharedPreferences.getString("id_umkm", "");
@@ -71,23 +72,27 @@ public class Edit_profil extends AppCompatActivity {
         Fotoprofil = findViewById(R.id.foto_profil);
 
         emailuser.setText(email);
-        namauser.setText(nama );
+        namauser.setText(nama);
         notelpuser.setText(notelp);
         alamatuser.setText(alamat);
 
-        retrofitclient.getConnection().create(RetrofitEndPoint.class).Profil(sharedPreferences.getString("id_akun","")).enqueue(new Callback<userrespons>() {
+        retrofitclient.getConnection().create(RetrofitEndPoint.class).Profil(sharedPreferences.getString("id_akun", "")).enqueue(new Callback<userrespons>() {
             @Override
             public void onResponse(Call<userrespons> call, Response<userrespons> response) {
-                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
                     usermodel profil = response.body().getData();
 
                     emailuser.setText(profil.getEmail());
                     namauser.setText(profil.getNama_user());
                     notelpuser.setText(profil.getNotelp_user());
                     alamatuser.setText(profil.getAlamat_user());
-//                    fotoProfil.setText(profil.getKecamatanumkm());
 
-                }else{
+                    // Tambahkan kode Glide untuk memuat gambar profil
+                    Glide.with(Edit_profil.this)
+                            .load(retrofitclient.USER_PHOTO_URL + profil.getUserfoto())
+                            .into(fotoProfil);
+
+                } else {
                     Toast.makeText(Edit_profil.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -107,9 +112,9 @@ public class Edit_profil extends AppCompatActivity {
             public void onClick(View view) {
                 retrofitclient.getConnection().create(RetrofitEndPoint.class)
                         .Btn_simpanprofil(
-                                sharedPreferences.getString("id_akun", ""),emailuser.getText().toString(),"",namauser.getText().toString(),
-                                alamatuser.getText().toString(),notelpuser.getText().toString(),
-                                "","",""
+                                sharedPreferences.getString("id_akun", ""), emailuser.getText().toString(), "", namauser.getText().toString(),
+                                alamatuser.getText().toString(), notelpuser.getText().toString(),
+                                "", "", ""
                         ).enqueue(new Callback<userrespons>() {
                             @Override
                             public void onResponse(Call<userrespons> call, Response<userrespons> response) {
@@ -122,15 +127,27 @@ public class Edit_profil extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<userrespons> call, Throwable t) {
-                                    t.printStackTrace();
-                                }
+                                t.printStackTrace();
+                            }
 
 
                         });
+
+                if (uri != null) {
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(Edit_profil.this.getContentResolver(), uri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    String encoded = ImageUtil.bitmapToBase64String(bitmap, 100);
+                    uploadPhoto(encoded);
+                } else {
+
+                }
             }
         });
-
-
 
 
         ImageButton backButton = findViewById(R.id.btnBack);
@@ -140,34 +157,7 @@ public class Edit_profil extends AppCompatActivity {
                 onBackPressed();
             }
         });
-//
-//        jenisKelaminButton = findViewById(R.id.btnjeniskelamin);
-//        btnJenisKelamin = findViewById(R.id.btnjeniskelamin);
-//
-//        String[] pilihanJenisKelamin = {"Laki-laki", "Perempuan", }; // Gantilah dengan daftar pilihan jenis kelamin yang sesuai
 
-//        // Mengatur onClickListener pada Button untuk menampilkan PopupMenu
-//        btnJenisKelamin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                PopupMenu popupMenu = new PopupMenu(Edit_profil.this, btnJenisKelamin);
-//                Menu menu = popupMenu.getMenu();
-//                for (String jenisKelamin : pilihanJenisKelamin) {
-//                    menu.add(jenisKelamin);
-//                }
-//
-//                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//                    @Override
-//                    public boolean onMenuItemClick(MenuItem item) {
-//                        String pilihanJenisKelamin = item.getTitle().toString();
-//                        jenisKelaminButton.setText(pilihanJenisKelamin); // Mengisi Button dengan pilihan yang dipilih
-//                        return true;
-//                    }
-//                });
-//
-//                popupMenu.show();
-//            }
-//        });
 
 
         TextView ubahFoto = findViewById(R.id.btn_ubahfoto);
@@ -177,12 +167,34 @@ public class Edit_profil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (ContextCompat.checkSelfPermission(Edit_profil.this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != 0) {
-                    ActivityCompat.requestPermissions(Edit_profil.this, new String[] { android.Manifest.permission.READ_EXTERNAL_STORAGE }, PICK_IMAGE);
+                    ActivityCompat.requestPermissions(Edit_profil.this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, PICK_IMAGE);
                 } else {
                     openGallery();
                 }
             }
         });
+    }
+
+    private void uploadPhoto(String imgBase64) {
+        retrofitclient.getConnection().create(RetrofitEndPoint.class)
+                .Update_profil(emailuser.getText().toString(), imgBase64)
+                .enqueue(new Callback<userrespons>() {
+                    @Override
+                    public void onResponse(Call<userrespons> call, Response<userrespons> response) {
+                        if (response.body() != null && response.body().getMessage().equalsIgnoreCase("success")) {
+                            Glide.with(Edit_profil.this)
+                                    .load(retrofitclient.USER_PHOTO_URL+ response.body().getData().getUserfoto())
+                                    .into(fotoProfil);
+                        } else {
+                            Toast.makeText(Edit_profil.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<userrespons> call, Throwable t) {
+                        Toast.makeText(Edit_profil.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void openGallery() {
@@ -194,8 +206,8 @@ public class Edit_profil extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK && requestCode == PICK_IMAGE) {
-            imageUri = data.getData();
-            fotoProfil.setImageURI(imageUri);
+            uri = data.getData();
+            fotoProfil.setImageURI(uri);
         }
     }
 }

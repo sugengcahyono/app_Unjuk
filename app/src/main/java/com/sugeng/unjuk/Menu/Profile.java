@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sugeng.unjuk.Menu.Profilmenu.DataUmkm;
 import com.sugeng.unjuk.Menu.Profilmenu.Edit_profil;
 import com.sugeng.unjuk.Menu.Profilmenu.Ganti_katasandi;
@@ -22,9 +24,12 @@ import com.sugeng.unjuk.Retrofit.RetrofitEndPoint;
 import com.sugeng.unjuk.Retrofit.retrofitclient;
 import com.sugeng.unjuk.Model.usermodel;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+
 
 
 public class Profile extends Fragment {
@@ -32,6 +37,8 @@ public class Profile extends Fragment {
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+
+    private CircleImageView fotoProfil;
 
 
 
@@ -45,9 +52,14 @@ public class Profile extends Fragment {
         Button editprofil = (Button) view.findViewById(R.id.btn_EditProfil); // Menghubungkan tombol dengan kode Java
         Button Dataumkm = (Button) view.findViewById(R.id.btn_Dataumkm);
         Button Gantisandi = (Button) view.findViewById(R.id.btn_Gantikatasandi);
+        CircleImageView fotoProfil = (CircleImageView) view.findViewById(R.id.foto_profiluser);
 
         sharedPreferences = getContext().getSharedPreferences("prefLogin", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
+        Glide.with(Profile.this)
+                .load(retrofitclient.USER_PHOTO_URL+ sharedPreferences.getString("user_foto", ""))
+                .into(fotoProfil);
 
         retrofitclient.getConnection().create(RetrofitEndPoint.class).Profil(sharedPreferences.getString("id_akun","")).enqueue(new Callback<userrespons>() {
             @Override
@@ -57,7 +69,9 @@ public class Profile extends Fragment {
 
                     email.setText(profil.getEmail());
                     namauser.setText(profil.getNama_user());
-//                    fotoProfil.setText(profil.getKecamatanumkm());
+                    Glide.with(Profile.this)
+                            .load(retrofitclient.USER_PHOTO_URL + profil.getUserfoto())
+                            .into(fotoProfil);
 
                 }else{
 //                    Toast.makeText(Profile.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

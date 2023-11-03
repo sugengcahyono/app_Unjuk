@@ -31,9 +31,11 @@
 
 
 
-       <ImageView
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/foto_profiluser"
            android:layout_width="@dimen/_80sdp"
            android:layout_height="@dimen/_80sdp"
+           android:layout_marginTop="@dimen/_5sdp"
            android:layout_gravity="center"
            android:src="@drawable/baseline_account_circle_24"
 

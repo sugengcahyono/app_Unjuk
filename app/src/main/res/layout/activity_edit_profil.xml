@@ -244,6 +244,7 @@
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
                 android:backgroundTint="@color/blue"
                 android:text="Simpan"
                 android:textSize="@dimen/_15sdp"

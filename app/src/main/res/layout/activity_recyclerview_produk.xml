@@ -89,9 +89,13 @@
                         android:layout_marginTop="@dimen/_3sdp"
                         android:background="@color/white"
                         android:src="@drawable/titiktiga"
-
-
                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:id="@+id/id_produk"/>
 
                 </LinearLayout>
 
