@@ -111,6 +111,15 @@ public interface RetrofitEndPoint {
             @Field("photo") String userfoto
 
     );
+
+    @FormUrlEncoded
+    @POST("Updatephotoumkm.php")
+    Call<dataumkmrespons> Update_photoumkm (
+
+            @Field("nama_umkm") String namaumkm,
+            @Field("photo") String umkmfoto
+
+    );
     @FormUrlEncoded
     @POST("Produkumkm.php")
     Call<dataprodukrespons> Produk_umkm (

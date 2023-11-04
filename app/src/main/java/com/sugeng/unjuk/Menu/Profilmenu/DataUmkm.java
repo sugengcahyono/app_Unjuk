@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,11 +23,15 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
 import com.sugeng.unjuk.Model.umkmmodel;
 import com.sugeng.unjuk.R;
 import com.sugeng.unjuk.Respons.dataumkmrespons;
+import com.sugeng.unjuk.Respons.userrespons;
 import com.sugeng.unjuk.Retrofit.RetrofitEndPoint;
 import com.sugeng.unjuk.Retrofit.retrofitclient;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,8 +52,8 @@ public class DataUmkm extends AppCompatActivity {
 
     private ImageView fotoProfil;
     private static final int PICK_IMAGE = 1;
-
-    private Uri imageUri;
+    private TextView namaumkm;
+    private Uri uri;
 
     private EditText namauser, notelpuser, alamatuser;
 
@@ -78,6 +83,10 @@ public class DataUmkm extends AppCompatActivity {
                     kecamatanButton.setText(user.getKecamatanumkm());
                     inputalamatumkm.setText(user.getAlamatumkm());
 
+                    // Tambahkan kode Glide untuk memuat gambar profil
+                    Glide.with(DataUmkm.this)
+                            .load(retrofitclient.UMKM_PHOTO_URL + user.getUmkmfoto())
+                            .into(fotoProfil);
 
                 }else{
                     Toast.makeText(DataUmkm.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -98,7 +107,7 @@ public class DataUmkm extends AppCompatActivity {
             public void onClick(View view) {
                 retrofitclient.getConnection().create(RetrofitEndPoint.class)
                         .Btn_simpanumkm(
-                               "", inputnamaumkm.getText().toString(), jenisusahaButton.getText().toString(),
+                                "", inputnamaumkm.getText().toString(), jenisusahaButton.getText().toString(),
                                 inputnibumkm.getText().toString(), inputnohpumkm.getText().toString(), kecamatanButton.getText().toString(),
                                 inputalamatumkm.getText().toString(), "", sharedPreferences.getString("id_akun", "")
                         ).enqueue(new Callback<dataumkmrespons>() {
@@ -116,9 +125,23 @@ public class DataUmkm extends AppCompatActivity {
                                 t.printStackTrace();
                             }
                         });
+
+                if (uri != null) {
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(DataUmkm.this.getContentResolver(), uri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    String encoded = ImageUtil.bitmapToBase64String(bitmap, 100);
+                    uploadPhoto(encoded);
+                } else {
+
+                }
+
             }
         });
-
 
         // Mengatur pilihan jenis usaha
         jenisusahaButton = findViewById(R.id.btn_jenisusaha);
@@ -188,10 +211,10 @@ public class DataUmkm extends AppCompatActivity {
         });
 
 // Menambahkan foto umkm
-        TextView ubahFoto = findViewById(R.id.btn_ubahfotoumkm);
+        TextView ubahFotoumkm = findViewById(R.id.btn_ubahfotoumkm);
         fotoProfil = findViewById(R.id.foto_umkm);
 
-        ubahFoto.setOnClickListener(new View.OnClickListener() {
+        ubahFotoumkm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ContextCompat.checkSelfPermission(DataUmkm.this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != 0) {
@@ -204,6 +227,27 @@ public class DataUmkm extends AppCompatActivity {
 
 
     }
+    private void uploadPhoto(String imgBase64) {
+        retrofitclient.getConnection().create(RetrofitEndPoint.class)
+                .Update_photoumkm(inputnamaumkm.getText().toString(), imgBase64)
+                .enqueue(new Callback<dataumkmrespons>() {
+                    @Override
+                    public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {
+                        if (response.body() != null && response.body().getMessage().equalsIgnoreCase("success")) {
+                            Glide.with(DataUmkm.this)
+                                    .load(retrofitclient.UMKM_PHOTO_URL+ response.body().getData().getUmkmfoto())
+                                    .into(fotoProfil);
+                        } else {
+                            Toast.makeText(DataUmkm.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<dataumkmrespons> call, Throwable t) {
+                        Toast.makeText(DataUmkm.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
     private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -214,8 +258,8 @@ public class DataUmkm extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK && requestCode == PICK_IMAGE) {
-            imageUri = data.getData();
-            fotoProfil.setImageURI(imageUri);
+            uri = data.getData();
+            fotoProfil.setImageURI(uri);
         }
     }
 }
