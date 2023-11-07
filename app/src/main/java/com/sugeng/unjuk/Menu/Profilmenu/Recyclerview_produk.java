@@ -1,9 +1,11 @@
 package com.sugeng.unjuk.Menu.Profilmenu;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,9 +26,12 @@ import retrofit2.Callback;
 public class Recyclerview_produk extends RecyclerView.Adapter<Recyclerview_produk.RecyclerviewHolder> {
 List<produkmodel> data;
 public static View.OnClickListener clicklistener;
+
+    private Context context;
     private SharedPreferences sharedPreferences;
 
     public Recyclerview_produk(ArrayList<produkmodel> data, Context context ) {
+        this.context = context;
         this.sharedPreferences = context.getSharedPreferences("prefProduk", Context.MODE_PRIVATE);
         this.data = data;
 
@@ -54,7 +59,7 @@ public static View.OnClickListener clicklistener;
         holder.namaproduk.setText(item.getNamaproduk());
         holder.hargaproduk.setText(item.getHargaproduk());
 //        holder.fotoproduk.setImageURI(item.getGambarproduk1());
-        holder.idproduk.setText(item.getIdproduk());
+//        holder.idproduk.setText(item.getIdproduk());
 
         //klik produk
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +91,14 @@ public static View.OnClickListener clicklistener;
             }
         });
 
+        // Hapus produk
+        holder.btnhapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDeleteConfirmationDialog(item.getIdproduk());
+            }
+        });
+
     }
 
     @Override
@@ -107,8 +120,30 @@ public static View.OnClickListener clicklistener;
             hargaproduk = itemView.findViewById(R.id.Harga_produk);
             fotoproduk = itemView.findViewById(R.id.image_Produk);
             btnhapus = itemView.findViewById(R.id.btn_hapus);
-            idproduk = itemView.findViewById(R.id.id_produk);
+//            idproduk = itemView.findViewById(R.id.id_produk);
 
         }
+    }
+
+    private void showDeleteConfirmationDialog(final String idProduk) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("Apakah Anda yakin ingin menghapus produk ini?")
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Tindakan jika pengguna memilih "Ya" (misalnya, hapus produk)
+                        // Panggil metode untuk menghapus produk dengan ID tertentu
+                        // deleteProduct(idProduk);
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Tindakan jika pengguna memilih "Tidak" atau keluar dari dialog
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

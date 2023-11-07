@@ -6,9 +6,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +26,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.sugeng.unjuk.Model.umkmmodel;
 import com.sugeng.unjuk.R;
 import com.sugeng.unjuk.Respons.dataumkmrespons;
@@ -56,6 +59,7 @@ public class DataUmkm extends AppCompatActivity {
     private Uri uri;
 
     private EditText namauser, notelpuser, alamatuser;
+    String umkmFotoURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +68,30 @@ public class DataUmkm extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("prefLogin", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        String idakun = sharedPreferences.getString("idakun", "");
+        String email = sharedPreferences.getString("email", "");
+        String nama = sharedPreferences.getString("nama_user", "");
+        String alamat = sharedPreferences.getString("alamat", "");
+        String notelp = sharedPreferences.getString("no_telp", "");
+        String userfoto = sharedPreferences.getString("user_foto", "");
+        String idUmkm = sharedPreferences.getString("id_umkm", "");
+        String umkmfoto = sharedPreferences.getString("umkm_foto", "");
 
         inputnamaumkm = findViewById(R.id.input_namaumkm);
         inputnibumkm = findViewById(R.id.input_nibumkm);
         inputnohpumkm = findViewById(R.id.input_nohpumkm);
         inputalamatumkm = findViewById(R.id.input_alamatumkm);
+
+        String userFotoBase64 = sharedPreferences.getString("umkm_foto", ""); // Gantilah ini sesuai dengan cara Anda menyimpan Base64 gambar profil
+
+        if (!userFotoBase64.isEmpty()) {
+            byte[] imageBytes = Base64.decode(userFotoBase64, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+            fotoProfil.setImageBitmap(bitmap);
+        } else {
+            // Handle jika Base64 gambar profil kosong atau tidak valid
+        }
+
 
         retrofitclient.getConnection().create(RetrofitEndPoint.class).Data_umkm(sharedPreferences.getString("id_akun", "")).enqueue(new Callback<dataumkmrespons>() {
             @Override
@@ -82,6 +105,14 @@ public class DataUmkm extends AppCompatActivity {
                     inputnohpumkm.setText(user.getNotelpumkm());
                     kecamatanButton.setText(user.getKecamatanumkm());
                     inputalamatumkm.setText(user.getAlamatumkm());
+
+                    umkmFotoURL = user.getUmkmfoto(); // Gantilah ini sesuai dengan cara Anda mengambil URL gambar profil dari respons server
+
+                    if (!umkmFotoURL.isEmpty()) {
+                        Picasso.get().load(umkmFotoURL).into(fotoProfil);
+                    } else {
+                        // Handle jika URL gambar profil kosong atau tidak valid
+                    }
 
                     // Tambahkan kode Glide untuk memuat gambar profil
                     Glide.with(DataUmkm.this)
@@ -107,13 +138,34 @@ public class DataUmkm extends AppCompatActivity {
             public void onClick(View view) {
                 retrofitclient.getConnection().create(RetrofitEndPoint.class)
                         .Btn_simpanumkm(
-                                "", inputnamaumkm.getText().toString(), jenisusahaButton.getText().toString(),
-                                inputnibumkm.getText().toString(), inputnohpumkm.getText().toString(), kecamatanButton.getText().toString(),
-                                inputalamatumkm.getText().toString(), "", sharedPreferences.getString("id_akun", "")
+                                "",
+                                inputnamaumkm.getText().toString(),
+                                jenisusahaButton.getText().toString(),
+                                inputnibumkm.getText().toString(),
+                                inputnohpumkm.getText().toString(),
+                                kecamatanButton.getText().toString(),
+                                inputalamatumkm.getText().toString(),
+                                umkmFotoURL
+                                , sharedPreferences.getString("id_akun", "")
                         ).enqueue(new Callback<dataumkmrespons>() {
                             @Override
                             public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {
                                 if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                                    umkmmodel user = response.body().getData();
+                                    if (user != null) {
+                                        inputnamaumkm.setText(user.getNamaumkm());
+                                        jenisusahaButton.setText(user.getJenisusahaumkm());
+                                        inputnibumkm.setText(user.getNib());
+                                        inputnohpumkm.setText(user.getNotelpumkm());
+                                        kecamatanButton.setText(user.getKecamatanumkm());
+                                        inputalamatumkm.setText(user.getAlamatumkm());
+
+                                        // Mengambil foto profil dan menampilkannya dengan Picasso
+                                        umkmFotoURL = user.getUmkmfoto();
+                                        if (umkmFotoURL != null && !umkmFotoURL.isEmpty()) {
+                                            Picasso.get().load(umkmFotoURL).into(fotoProfil);
+                                        }
+                                    }
                                     Toast.makeText(DataUmkm.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 }else {
                                     Toast.makeText(DataUmkm.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

@@ -100,6 +100,22 @@ public interface RetrofitEndPoint {
             @Field("user_foto") String userfoto,
             @Field("Kode_OTP") String kodeotp,
             @Field("Level") String level
+    );
+
+    @FormUrlEncoded
+    @POST("Buttonsimpaneditproduk.php")
+    Call<dataprodukrespons> Btn_simpaneditproduk (
+            @Field("id_produk") String id_produk,
+            @Field("nama_produk") String namaproduk,
+            @Field("harga_produk") String hargaproduk,
+            @Field("kategori_produk") String kategoriproduk,
+            @Field("deskripsi_produk") String deskripsiproduk,
+            @Field("pirt_produk") String pirtproduk,
+            @Field("bpom_produk") String bpomproduk,
+            @Field("idhalal_produk") String idhalalproduk,
+            @Field("gambar_produk1") String gambarproduk1,
+            @Field("gambar_produk2") String gambarproduk2,
+            @Field("gambar_produk3") String gambarproduk3
 
     );
 
@@ -154,5 +170,12 @@ public interface RetrofitEndPoint {
     @POST("Ambildataproduk.php")
     Call<dataprodukrespons> ambildataproduk(
             @Field("id_produk") String idproduk
+    );
+
+    @FormUrlEncoded
+    @POST("update_pp.php")
+    Call<userrespons> updatePP(
+            @Field("email") String email,
+            @Field("photo") String photo
     );
 }

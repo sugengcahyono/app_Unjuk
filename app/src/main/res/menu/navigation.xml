@@ -4,6 +4,7 @@
     <item android:id="@+id/menu_dashboard_item"
       android:title="Produk"
       android:icon="@drawable/outline_shopping_bag_24"
+
       />
     <item android:id="@+id/menu_upload_item"
         android:title="Upload"

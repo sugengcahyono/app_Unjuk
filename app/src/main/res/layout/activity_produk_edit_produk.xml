@@ -55,6 +55,17 @@
                 android:orientation="vertical"
                 android:padding="@dimen/_8sdp">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:paddingHorizontal="@dimen/_11sdp"
+                    android:text="Foto Produk"
+                    android:textSize="@dimen/_14sdp"
+                    android:gravity="left"
+                    android:textStyle="bold"
+                    />
+
                 <!--           upload foto-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -329,12 +340,13 @@
 
 
                 <Button
-                    android:id="@+id/Btnupload"
+                    android:id="@+id/btn_simpaneditproduk"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
                     android:backgroundTint="@color/blue"
-                    android:text="Upload"
+                    android:text="Simpan"
                     android:textSize="@dimen/_15sdp"
                     android:textStyle="bold"
                     android:textColor="@color/white"

@@ -31,12 +31,15 @@ public class usermodel {
     @SerializedName("id_umkm")
     private String idumkm;
     @Expose
+    @SerializedName("umkm_foto")
+    private String umkmfoto;
+    @Expose
     @SerializedName("id_produk")
     private String idproduk;
 
         public usermodel(String idakun, String email, String pass,
                          String namauser, String alamatuser,
-                         String notelpuser, String userfoto,String idumkm, String idproduk) {
+                         String notelpuser, String userfoto,String idumkm,String umkmfoto, String idproduk) {
             this.idakun = idakun;
             this.Email = email;
             this.Password = pass;
@@ -45,6 +48,7 @@ public class usermodel {
             this.notelp_user = notelpuser;
             this.userfoto = userfoto;
             this.idumkm = idumkm;
+            this.umkmfoto = umkmfoto;
             this.idproduk = idproduk;
         }
 
@@ -106,6 +110,14 @@ public class usermodel {
 
     public String getIdumkm() {
         return idumkm;
+    }
+
+    public String getUmkmfoto() {
+        return umkmfoto;
+    }
+
+    public void setUmkmfoto(String umkmfoto) {
+        this.umkmfoto = umkmfoto;
     }
 
     public void setIdumkm(String idumkm) {

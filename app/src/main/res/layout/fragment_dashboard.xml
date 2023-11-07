@@ -65,6 +65,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/oval_background1"
                     android:hint="Cari Produk Saya ..."
+                    android:textColor="@color/black"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:maxLines="1"

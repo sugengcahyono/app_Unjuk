@@ -45,6 +45,18 @@
            android:layout_height="wrap_content"
            android:orientation="vertical"
            android:padding="@dimen/_8sdp">
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:paddingHorizontal="@dimen/_11sdp"
+               android:text="Data UMKM"
+               android:textColor="@color/black"
+               android:textSize="@dimen/_18sdp"
+               android:gravity="center"
+               android:textStyle="bold"
+               android:background="@color/abuputih"
+               android:layout_marginBottom="@dimen/_10sdp"
+               />
 
 
            <LinearLayout
@@ -54,12 +66,15 @@
                android:background="@color/white"
                >
 
+
+
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"
                    android:layout_marginTop="@dimen/_5sdp"
                    android:paddingHorizontal="@dimen/_11sdp"
                    android:text="Nama UMKM"
+                   android:textColor="@color/black"
                    android:textSize="@dimen/_14sdp"
                    android:gravity="left"
                    android:textStyle="bold"
@@ -94,6 +109,7 @@
                    android:layout_marginTop="@dimen/_5sdp"
                    android:paddingHorizontal="@dimen/_11sdp"
                    android:text="Jenis Usaha"
+                   android:textColor="@color/black"
                    android:textSize="@dimen/_14sdp"
                    android:gravity="left"
                    android:textStyle="bold"
@@ -122,6 +138,7 @@
                    android:layout_marginTop="@dimen/_5sdp"
                    android:paddingHorizontal="@dimen/_11sdp"
                    android:text="NIB"
+                   android:textColor="@color/black"
                    android:textSize="@dimen/_14sdp"
                    android:gravity="left"
                    android:textStyle="bold"
@@ -155,6 +172,7 @@
                    android:layout_marginTop="@dimen/_5sdp"
                    android:paddingHorizontal="@dimen/_11sdp"
                    android:text="No. Telephone"
+                   android:textColor="@color/black"
                    android:textSize="@dimen/_14sdp"
                    android:gravity="left"
                    android:textStyle="bold"
@@ -188,6 +206,7 @@
                    android:layout_marginTop="@dimen/_5sdp"
                    android:paddingHorizontal="@dimen/_11sdp"
                    android:text="Kecamatan"
+                   android:textColor="@color/black"
                    android:textSize="@dimen/_14sdp"
                    android:gravity="left"
                    android:textStyle="bold"
@@ -220,6 +239,7 @@
                    android:layout_marginTop="@dimen/_5sdp"
                    android:paddingHorizontal="@dimen/_11sdp"
                    android:text="Alamat"
+                   android:textColor="@color/black"
                    android:textSize="@dimen/_14sdp"
                    android:gravity="left"
                    android:textStyle="bold"
@@ -230,6 +250,7 @@
                    android:layout_height="match_parent"
                    app:boxBackgroundColor="@color/white"
                    android:paddingHorizontal="@dimen/_10sdp"
+                   android:textColor="@color/black"
                    android:layout_marginTop="@dimen/_5sdp"
                    app:hintEnabled="false"
                    >
@@ -259,6 +280,7 @@
                    android:textStyle="bold"
                    android:textColor="@color/white"
                    android:layout_gravity="right"
+                   android:layout_marginBottom="@dimen/_20sdp"
                    />
 
 
@@ -267,9 +289,22 @@
            <TextView
                android:layout_width="match_parent"
                android:layout_height="match_parent"
-               android:layout_marginTop="@dimen/_20sdp"
+               android:layout_marginTop="@dimen/_23sdp"
+               android:paddingHorizontal="@dimen/_11sdp"
+               android:text="Data Produk"
+               android:textSize="@dimen/_18sdp"
+               android:textColor="@color/black"
+               android:gravity="center"
+               android:textStyle="bold"
+               />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginTop="@dimen/_10sdp"
                android:paddingHorizontal="@dimen/_11sdp"
                android:text="Tambahkan Foto"
+               android:textColor="@color/black"
                android:textSize="@dimen/_14sdp"
                android:gravity="left"
                android:textStyle="bold"
@@ -331,6 +366,7 @@
                android:layout_marginTop="@dimen/_5sdp"
                android:paddingHorizontal="@dimen/_11sdp"
                android:text="Nama Produk"
+               android:textColor="@color/black"
                android:textSize="@dimen/_14sdp"
                android:gravity="left"
                android:textStyle="bold"
@@ -362,6 +398,7 @@
                android:layout_marginTop="@dimen/_5sdp"
                android:paddingHorizontal="@dimen/_11sdp"
                android:text="Harga"
+               android:textColor="@color/black"
                android:textSize="@dimen/_14sdp"
                android:gravity="left"
                android:textStyle="bold"
@@ -394,6 +431,7 @@
                android:layout_marginTop="@dimen/_5sdp"
                android:paddingHorizontal="@dimen/_11sdp"
                android:text="Kategori"
+               android:textColor="@color/black"
                android:textSize="@dimen/_14sdp"
                android:gravity="left"
                android:textStyle="bold"
@@ -422,6 +460,7 @@
                android:layout_marginTop="@dimen/_5sdp"
                android:paddingHorizontal="@dimen/_11sdp"
                android:text="Deskripsi Produk"
+               android:textColor="@color/black"
                android:textSize="@dimen/_14sdp"
                android:gravity="left"
                android:textStyle="bold"
@@ -487,6 +526,7 @@
                android:layout_marginTop="@dimen/_5sdp"
                android:paddingHorizontal="@dimen/_11sdp"
                android:text="BPOM"
+               android:textColor="@color/black"
                android:textSize="@dimen/_14sdp"
                android:gravity="left"
                android:textStyle="bold"
@@ -520,6 +560,7 @@
                android:layout_marginTop="@dimen/_5sdp"
                android:paddingHorizontal="@dimen/_11sdp"
                android:text="ID Halal"
+               android:textColor="@color/black"
                android:textSize="@dimen/_14sdp"
                android:gravity="left"
                android:textStyle="bold"
@@ -559,6 +600,7 @@
                android:textStyle="bold"
                android:textColor="@color/white"
                android:layout_gravity="center"
+               android:layout_marginBottom="@dimen/_20sdp"
                />
 
        </LinearLayout>

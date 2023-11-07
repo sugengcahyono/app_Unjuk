@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.sugeng.unjuk.Menu.Profilmenu.Produk_EditProduk;
@@ -32,6 +33,7 @@ import retrofit2.Response;
 
 public class dashboard extends Fragment {
     private View view;
+    ImageButton btnhapus;
     private ArrayList<produkmodel> data = new ArrayList<>();
     private SharedPreferences sharedPreferences;
 
@@ -85,6 +87,11 @@ public class dashboard extends Fragment {
                 startActivity(buka);
             }
         });
+
+
+        btnhapus = (ImageButton) view.findViewById(R.id.btn_hapus);
         // Inflate the layout for this fragment
         return view;}
+
+
 }

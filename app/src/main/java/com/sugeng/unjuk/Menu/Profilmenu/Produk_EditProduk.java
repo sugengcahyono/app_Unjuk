@@ -33,7 +33,7 @@ public class Produk_EditProduk extends AppCompatActivity {
 
     private ImageView Image1, Image2, Image3;
 
-    private Button btnkategori;
+    private Button btnkategori, simpanproduk;
     private String[] pilihankategori = {"Makanan", "Minuman", "Kerajinan", "Jasa"};
 
     private ImageView uploadfoto1, uploadfoto2, uploadfoto3;
@@ -53,6 +53,41 @@ public class Produk_EditProduk extends AppCompatActivity {
         pirtproduk = findViewById(R.id.input_pirtproduk);
         bpomproduk = findViewById(R.id.input_bpomproduk);
         idhalalproduk = findViewById(R.id.input_idhalalproduk);
+        simpanproduk = findViewById(R.id.btn_simpaneditproduk);
+
+
+//button simpan produk
+        simpanproduk.setOnClickListener(new View.OnClickListener() {
+            Intent intent =getIntent();
+            String id_produk = intent.getStringExtra("id_produk");
+            @Override
+            public void onClick(View view) {
+                retrofitclient.getConnection().create(RetrofitEndPoint.class)
+                        .Btn_simpaneditproduk(
+                                id_produk, namaproduk.getText().toString(), hargaproduk.getText().toString(),
+                                kategoriButton.getText().toString(),deskripsiproduk.getText().toString(),pirtproduk .getText().toString(),
+                                bpomproduk.getText().toString(),idhalalproduk.getText().toString(),"","",
+                                ""
+                        ).enqueue(new Callback<dataprodukrespons>() {
+                            @Override
+                            public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
+                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
+                                    Toast.makeText(Produk_EditProduk.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(Produk_EditProduk.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<dataprodukrespons> call, Throwable t) {
+                                t.printStackTrace();
+
+                            }
+                        });
+
+            }
+        });
+
 
 
         Intent intent =getIntent();
@@ -183,7 +218,6 @@ public class Produk_EditProduk extends AppCompatActivity {
             }
         }
     }
-
 
 }
 
