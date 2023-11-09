@@ -7,7 +7,9 @@ import com.sugeng.unjuk.Model.umkmmodel;
 public class dataumkmrespons {
 
 
-
+    @Expose
+    @SerializedName("id_umkm")
+    private String idUmkm;
     @Expose
     @SerializedName("status")
     private String status;
@@ -18,7 +20,8 @@ public class dataumkmrespons {
     @SerializedName("data")
     private umkmmodel data;
 
-    public dataumkmrespons(String status, String message, umkmmodel data){
+    public dataumkmrespons(String idUmkm, String status, String message, umkmmodel data){
+        this.idUmkm = idUmkm;
         this.status = status;
         this.message = message;
         this.data = data;
@@ -49,4 +52,11 @@ public class dataumkmrespons {
     }
 
 
+    public String getIdUmkm() {
+        return idUmkm;
+    }
+
+    public void setIdUmkm(String idUmkm) {
+        this.idUmkm = idUmkm;
+    }
 }

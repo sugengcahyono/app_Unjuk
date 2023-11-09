@@ -13,21 +13,27 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sugeng.unjuk.Model.produkmodel;
 import com.sugeng.unjuk.R;
 import com.sugeng.unjuk.Respons.dataprodukrespons;
+import com.sugeng.unjuk.Retrofit.RetrofitEndPoint;
+import com.sugeng.unjuk.Retrofit.retrofitclient;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Recyclerview_produk extends RecyclerView.Adapter<Recyclerview_produk.RecyclerviewHolder> {
 List<produkmodel> data;
 public static View.OnClickListener clicklistener;
 
     private Context context;
+
     private SharedPreferences sharedPreferences;
 
     public Recyclerview_produk(ArrayList<produkmodel> data, Context context ) {
@@ -74,14 +80,9 @@ public static View.OnClickListener clicklistener;
                         editor.putString("id_produk", clickedItem.getIdproduk());
                         editor.putString("nama_produk", clickedItem.getNamaproduk());
                         editor.putString("harga_produk", clickedItem.getHargaproduk());
-//                        editor.putString("kategori_produk", clickedItem.getKategoriproduk());
-//                        editor.putString("deskripsi_produk", clickedItem.getDeskripsiproduk());
-//                        editor.putString("pirt_produk", clickedItem.getPirtproduk());
-//                        editor.putString("bpom_produk", clickedItem.getBpomproduk());
-//                        editor.putString("id_halal", clickedItem.getIdhalalproduk());
-//                        editor.putString("gambar_produk1", clickedItem.getGambarproduk1());
-//                        editor.putString("gambar_produk2", clickedItem.getGambarproduk2());
-//                        editor.putString("gambar_produk3", clickedItem.getGambarproduk3());
+//
+                        editor.putString("gambar_produk1", clickedItem.getGambarproduk1());
+//
                         editor.apply();
 
                        clicklistener.onClick(view);
@@ -133,7 +134,7 @@ public static View.OnClickListener clicklistener;
                     public void onClick(DialogInterface dialog, int which) {
                         // Tindakan jika pengguna memilih "Ya" (misalnya, hapus produk)
                         // Panggil metode untuk menghapus produk dengan ID tertentu
-                        // deleteProduct(idProduk);
+                         deleteProduct(idProduk);
                     }
                 })
                 .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -146,4 +147,39 @@ public static View.OnClickListener clicklistener;
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    private void deleteProduct(String idProduk) {
+        // Lakukan panggilan Retrofit untuk menghapus produk berdasarkan idProduk
+        RetrofitEndPoint delete = retrofitclient.getConnection().create(RetrofitEndPoint.class);
+        Call<dataprodukrespons> call = delete.Hapusproduksaya(idProduk);
+
+        call.enqueue(new Callback<dataprodukrespons>() {
+
+            @Override
+            public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
+                if (response.isSuccessful()) {
+                    // Produk berhasil dihapus dari database, Anda dapat memperbarui daftar produk di RecyclerView.
+                    // Misalnya, Anda dapat memanggil metode yang memperbarui RecyclerView setelah penghapusan berhasil.
+//                    updateRecyclerViewAfterDeletion();
+
+                    // Tampilkan pesan Toast sukses
+                    Toast.makeText(context, "Produk berhasil dihapus", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Handle kesalahan jika penghapusan produk gagal.
+                    // Tampilkan pesan Toast gagal
+                    Toast.makeText(context, "Gagal menghapus produk", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<dataprodukrespons> call, Throwable t) {
+                // Handle kesalahan jaringan atau lainnya jika terjadi kesalahan dalam permintaan.
+                // Tampilkan pesan Toast kesalahan
+                Toast.makeText(context, "Terjadi kesalahan: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
 }

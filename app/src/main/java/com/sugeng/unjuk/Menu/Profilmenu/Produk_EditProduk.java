@@ -56,6 +56,8 @@ public class Produk_EditProduk extends AppCompatActivity {
         simpanproduk = findViewById(R.id.btn_simpaneditproduk);
 
 
+
+
 //button simpan produk
         simpanproduk.setOnClickListener(new View.OnClickListener() {
             Intent intent =getIntent();
@@ -112,6 +114,9 @@ public class Produk_EditProduk extends AppCompatActivity {
                      pirtproduk.setText(produk.getPirtproduk());
                      bpomproduk.setText(produk.getBpomproduk());
                      idhalalproduk.setText(produk.getIdhalalproduk());
+//                     Image1.setImageURI(produk.getGambarproduk1());
+//                     Image2.setImageURI(produk.getGambarproduk2());
+//                     Image3.setImageURI(produk.getGambarproduk3());
                  }else {
                      Toast.makeText(Produk_EditProduk.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                  }
@@ -168,9 +173,9 @@ public class Produk_EditProduk extends AppCompatActivity {
 
 
 //upload produk foto
-        uploadfoto1 = findViewById(R.id.uploadfoto1);
-        uploadfoto2 = findViewById(R.id.uploadfoto2);
-        uploadfoto3 = findViewById(R.id.uploadfoto3);
+//        uploadfoto1 = findViewById(R.id.uploadfoto1);
+//        uploadfoto2 = findViewById(R.id.uploadfoto2);
+//        uploadfoto3 = findViewById(R.id.uploadfoto3);
 
         setImageViewClickListeners();
     }

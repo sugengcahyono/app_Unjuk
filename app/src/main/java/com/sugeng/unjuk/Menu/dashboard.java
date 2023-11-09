@@ -78,12 +78,14 @@ public class dashboard extends Fragment {
                  SharedPreferences prefproduk = getActivity().getSharedPreferences("prefProduk", Context.MODE_PRIVATE);
                 String idproduk = prefproduk.getString("id_produk","");
                 String namaproduk = prefproduk.getString("nama_produk", "kosong");
+                String gambarproduk1 = prefproduk.getString("gambar_produk1", "");
 
 
                 Intent buka = new Intent(getActivity(), Produk_EditProduk.class);
 
                 buka.putExtra("id_produk", idproduk);
                 buka.putExtra("nama_produk",namaproduk);
+                buka.putExtra("gambar_produk1", gambarproduk1 );
                 startActivity(buka);
             }
         });

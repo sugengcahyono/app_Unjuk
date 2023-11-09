@@ -18,16 +18,28 @@ public class MainActivity extends AppCompatActivity {
         private BottomNavigationView bottomNavigationView;
         private  String nama;
 
+        public static String FRAGMENT = "frag", PROFILE = "prof";
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
-            bottomNavigationView = findViewById(R.id.bottom_navigation);
             Bundle extra = getIntent().getExtras();
+
             if (extra != null){
                 nama = extra.getString("NAMA");
+
+                if (extra != null && extra.getString(FRAGMENT) != null && extra.getString(FRAGMENT).equalsIgnoreCase(PROFILE)) {
+                    // Set the initial fragment to display
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new Profile())
+                            .commit();
+                }
+
             }
+
+            bottomNavigationView = findViewById(R.id.bottom_navigation);
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -62,5 +74,9 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new dashboard())
                     .commit();
+
+
+
+
         }
     }

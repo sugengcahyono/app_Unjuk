@@ -103,7 +103,7 @@ public class Edit_profil extends AppCompatActivity {
                     notelpuser.setText(profil.getNotelp_user());
                     alamatuser.setText(profil.getAlamat_user());
 
-                  userFotoURL = profil.getUserfoto(); // Gantilah ini sesuai dengan cara Anda mengambil URL gambar profil dari respons server
+                    userFotoURL = profil.getUserfoto(); // Gantilah ini sesuai dengan cara Anda mengambil URL gambar profil dari respons server
 
                     if (!userFotoURL.isEmpty()) {
                         Picasso.get().load(userFotoURL).into(Fotoprofil);

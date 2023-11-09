@@ -199,7 +199,7 @@ public class DataUmkm extends AppCompatActivity {
         jenisusahaButton = findViewById(R.id.btn_jenisusaha);
         btnjenisusaha = findViewById(R.id.btn_jenisusaha);
 
-        String[] pilihanjenisusaha = {"Makanan", "Minuman", "Kerajinan", "Jasa"};
+        String[] pilihanjenisusaha = {"Makanan", "Minuman", "Jasa", "Kerajinan"};
 
         btnjenisusaha.setOnClickListener(new View.OnClickListener() {
             @Override

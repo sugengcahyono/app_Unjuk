@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.sugeng.unjuk.GoogleUsers;
 import com.sugeng.unjuk.R;
 import com.sugeng.unjuk.Respons.userrespons;
 import com.sugeng.unjuk.Retrofit.RetrofitEndPoint;
@@ -27,7 +28,8 @@ import retrofit2.Response;
 
 public class Register extends AppCompatActivity {
     TextInputLayout textInputLayout;
-    EditText editText;
+    EditText editText, konfirmasisandi;
+    private GoogleUsers google;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,9 @@ public class Register extends AppCompatActivity {
         // toggle lihat password
         textInputLayout = findViewById(R.id.textinputlayout);
         editText = findViewById(R.id.edittext_pass);
+        konfirmasisandi = findViewById(R.id.edittext_passkonfirmasi);
+        google = new GoogleUsers(this);
+
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -90,6 +95,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if (password.getText().toString().equalsIgnoreCase(konfirmasisandi.getText().toString())){
                 retrofitclient.getConnection().create(RetrofitEndPoint.class)
                         .buatakun(namauser.getText().toString(), email.getText().toString(), password.getText().toString()
                                 ,nohpuser.getText().toString(),alamatuser.getText().toString(), "Mobile")
@@ -112,6 +118,9 @@ public class Register extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
+                }else {
+                    Toast.makeText(Register.this, "Maaf kata sandi tidak sama", Toast.LENGTH_SHORT).show();
+                }
 
 
             }

@@ -23,35 +23,7 @@ public class Ganti_katasandi extends AppCompatActivity {
             }
         });
 
-//        Button makanan = findViewById(R.id.btn_makanan);
-//        Button minuman = findViewById(R.id.btn_minuman);
-//        Button kerajinan = findViewById(R.id.btn_kerajinan);
-//        makanan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Membuat Intent untuk membuka aktivitas berikutnya
-//                Intent intent = new Intent(Produk_saya.this, Produk_makanan.class);
-//                startActivity(intent);
-//            }
-//        });
-
-//        minuman.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Membuat Intent untuk membuka aktivitas berikutnya
-//                Intent intent = new Intent(Produk_saya.this, Produk_minuman.class);
-//                startActivity(intent);
-//            }
-//        });
-
-//        kerajinan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Membuat Intent untuk membuka aktivitas berikutnya
-//                Intent intent = new Intent(Produk_saya.this, Produk_Kerajinan.class);
-//                startActivity(intent);
-//            }
-//        });
+//
 
 
     }

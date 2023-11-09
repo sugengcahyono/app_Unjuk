@@ -136,6 +136,7 @@
                         android:layout_centerVertical="true"
                         android:hint="Kata Sandi"
                         android:textSize="@dimen/_12sdp"
+                        android:maxLength="20"
                         android:inputType="textPassword"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
@@ -157,7 +158,7 @@
                     app:endIconMode="password_toggle"
 
                     app:helperTextEnabled="true"
-                    app:helperText="Masukkan Kata Sandi"
+
                     app:helperTextTextColor="@android:color/holo_blue_dark"
                     >
 
@@ -168,6 +169,7 @@
                         android:layout_centerVertical="true"
                         android:hint="Konfirmasi Kata Sandi"
                         android:textSize="@dimen/_12sdp"
+                        android:maxLength="20"
                         android:inputType="textPassword"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"

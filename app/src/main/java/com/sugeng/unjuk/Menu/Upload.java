@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,9 +16,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
+import com.sugeng.unjuk.Menu.Profilmenu.Edit_profil;
+import com.sugeng.unjuk.Menu.Profilmenu.ImageUtil;
 import com.sugeng.unjuk.R;
 import com.sugeng.unjuk.Respons.dataprodukrespons;
 import com.sugeng.unjuk.Respons.dataumkmrespons;
@@ -26,6 +30,7 @@ import com.sugeng.unjuk.Model.produkmodel;
 import com.sugeng.unjuk.Retrofit.retrofitclient;
 import com.sugeng.unjuk.Model.umkmmodel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -36,8 +41,15 @@ public class Upload extends Fragment {
 
     private Button jenisusahaButton;
     private Button btnjenisusaha;
+
+    private Uri uriImage1, uriImage2, uriImage3;
+
+    private int handler = 0;
+
+    private Bitmap bitImage1, bitImage2, bitImage3;
+
     private String[] pilihanjenisusaha = {"Makanan", "Minuman", "Kerajinan", "Jasa"};
-    private EditText namauser, notelpuser,alamatuser;
+    private EditText namauser, notelpuser, alamatuser;
     private Button kecamatanButton;
     private Button Btnkecamatan;
     private String[] pilihanKecamatan = {"Bagor", "Baron", "Berbek", "Gondang", "Jatikalen",
@@ -53,11 +65,11 @@ public class Upload extends Fragment {
     private ImageView uploadfoto1, uploadfoto2, uploadfoto3;
     private static final int PICK_IMAGE = 1;
     private int uploadedImageCount = 0;
-    private String[] pilihankategori = {"Makanan", "Minuman", "Kerajinan", "Jasa"};
-    private ImageView selectedImageView; // Menyimpan ImageView yang diklik
-    private Button  uploadproduk;
+    private String[] pilihankategori = {"Makanan", "Minuman", "Jasa", "Kerajinan"};
+    private ImageView uri; // Menyimpan ImageView yang diklik
+    private Button uploadproduk;
     private ImageView Image1, Image2, Image3;
-    private EditText namaproduk, hargaproduk, deskripsiproduk, pirtproduk,bpomproduk, idhalalproduk;
+    private EditText namaproduk, hargaproduk, deskripsiproduk, pirtproduk, bpomproduk, idhalalproduk;
 
     SharedPreferences sharedPreferences;
 
@@ -71,8 +83,8 @@ public class Upload extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_upload, container, false);
 
-         sharedPreferences = getContext().getSharedPreferences("prefLogin", Context.MODE_PRIVATE);
-         editor = sharedPreferences.edit();
+        sharedPreferences = getContext().getSharedPreferences("prefLogin", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         Image1 = view.findViewById(R.id.uploadfoto1);
         Image2 = view.findViewById(R.id.uploadfoto2);
@@ -88,7 +100,7 @@ public class Upload extends Fragment {
         retrofitclient.getConnection().create(RetrofitEndPoint.class).Produk_umkm("3").enqueue(new Callback<dataprodukrespons>() {
             @Override
             public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
-                if(response.body() !=null && response.body().getStatus().equalsIgnoreCase("succes")){
+                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("succes")) {
                     produkmodel produk = (produkmodel) response.body().getData().get(0);
 
                     namaproduk.setText(produk.getNamaproduk());
@@ -98,9 +110,10 @@ public class Upload extends Fragment {
                     pirtproduk.setText(produk.getPirtproduk());
                     bpomproduk.setText(produk.getBpomproduk());
                     idhalalproduk.setText(produk.getIdhalalproduk());
-//                    Image1.setText(produk.getGambarproduk1());
-//                    Image2.setText(produk.getGambarproduk2());
-//                    Image3.setText(produk.getGambarproduk3());
+//                    Image1 = produk.getGambarproduk1();
+//                    Image1.setImageURI(produk.getGambarproduk1());
+//                    Image2.setImageURI(produk.getGambarproduk2());
+//                    Image3.setImageURI(produk.getGambarproduk3());
 
                 } else {
 
@@ -120,15 +133,18 @@ public class Upload extends Fragment {
             public void onClick(View view) {
                 retrofitclient.getConnection().create(RetrofitEndPoint.class)
                         .btn_uploadproduk(
-                                "", namaproduk.getText().toString(),hargaproduk.getText().toString(),
-                                kategoriButton.getText().toString(),deskripsiproduk.getText().toString(),
+                                "", namaproduk.getText().toString(), hargaproduk.getText().toString(),
+                                kategoriButton.getText().toString(), deskripsiproduk.getText().toString(),
                                 pirtproduk.getText().toString(), bpomproduk.getText().toString(),
-                                idhalalproduk.getText().toString(),"",
-                                "","", Upload.this.sharedPreferences.getString("id_umkm", "")
+                                idhalalproduk.getText().toString(),
+                                ImageUtil.bitmapToBase64String(bitImage1, 100),
+                                ImageUtil.bitmapToBase64String(bitImage2, 100),
+                                ImageUtil.bitmapToBase64String(bitImage3, 100),
+                                Upload.this.sharedPreferences.getString("id_umkm", "")
                         ).enqueue(new Callback<dataprodukrespons>() {
                             @Override
                             public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
-                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
                                     Toast.makeText(requireContext(), "Data Berhasil diupload", Toast.LENGTH_SHORT).show();
                                     namaproduk.setText("");
                                     hargaproduk.setText("");
@@ -138,7 +154,10 @@ public class Upload extends Fragment {
                                     deskripsiproduk.setText("");
                                     bpomproduk.setText("");
                                     idhalalproduk.setText("");
-                                }else {
+                                    uploadfoto1.setImageDrawable(null);
+                                    uploadfoto2.setImageDrawable(null);
+                                    uploadfoto3.setImageDrawable(null);
+                                } else {
                                     Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -149,9 +168,9 @@ public class Upload extends Fragment {
                             }
                         });
 
+
             }
         });
-
 
 
         inputnamaumkm = view.findViewById(R.id.input_namaumkm);
@@ -162,7 +181,7 @@ public class Upload extends Fragment {
         retrofitclient.getConnection().create(RetrofitEndPoint.class).Data_umkm(sharedPreferences.getString("id_akun", "")).enqueue(new Callback<dataumkmrespons>() {
             @Override
             public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {
-                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
                     umkmmodel user = response.body().getData();
 
                     inputnamaumkm.setText(user.getNamaumkm());
@@ -173,7 +192,7 @@ public class Upload extends Fragment {
                     inputalamatumkm.setText(user.getAlamatumkm());
 
 
-                }else{
+                } else {
 
                 }
 
@@ -195,13 +214,17 @@ public class Upload extends Fragment {
                         .Btn_uploadumkm(
                                 "", inputnamaumkm.getText().toString(), jenisusahaButton.getText().toString(),
                                 inputnibumkm.getText().toString(), inputnohpumkm.getText().toString(), kecamatanButton.getText().toString(),
-                                inputalamatumkm.getText().toString(), "", sharedPreferences.getString("id_akun","")
+                                inputalamatumkm.getText().toString(), "", sharedPreferences.getString("id_akun", "")
                         ).enqueue(new Callback<dataumkmrespons>() {
                             @Override
                             public void onResponse(Call<dataumkmrespons> call, Response<dataumkmrespons> response) {
-                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
                                     Toast.makeText(requireContext(), "Data Berhasil Disimpan", Toast.LENGTH_SHORT).show();
-                                }else {
+
+                                    editor.putString("id_umkm", response.body().getIdUmkm());
+                                    editor.apply();
+
+                                } else {
                                     Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -316,6 +339,7 @@ public class Upload extends Fragment {
             @Override
             public void onClick(View v) {
                 handleImageViewClick(uploadfoto1);
+                handler = 1;
             }
         });
 
@@ -323,6 +347,7 @@ public class Upload extends Fragment {
             @Override
             public void onClick(View v) {
                 handleImageViewClick(uploadfoto2);
+                handler = 2;
             }
         });
 
@@ -330,13 +355,14 @@ public class Upload extends Fragment {
             @Override
             public void onClick(View v) {
                 handleImageViewClick(uploadfoto3);
+                handler = 3;
             }
         });
     }
 
     private void handleImageViewClick(ImageView imageView) {
         // Simpan ImageView yang diklik
-        selectedImageView = imageView;
+        uri = imageView;
         openGallery();
     }
 
@@ -349,11 +375,49 @@ public class Upload extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK && requestCode == PICK_IMAGE) {
-            if (selectedImageView != null) {
+            if (uri != null) {
                 Uri imageUri = data.getData();
-                selectedImageView.setImageURI(imageUri);
+                uri.setImageURI(imageUri);
+
+                switch (handler) {
+                    case 1: {
+                        uriImage1 = data.getData();
+                        break;
+                    }
+                    case 2: {
+                        uriImage2 = data.getData();
+                        break;
+                    }
+                    case 3: {
+                        uriImage3 = data.getData();
+                        break;
+                    }
+                }
+
+
+                try {
+
+                    switch (handler) {
+                        case 1: {
+                            bitImage1 = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), uriImage1);
+                            break;
+                        }
+                        case 2: {
+                            bitImage2 = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), uriImage2);
+                            break;
+                        }
+                        case 3: {
+                            bitImage3 = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), uriImage3);
+                            break;
+                        }
+                    }
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
+
 
 }

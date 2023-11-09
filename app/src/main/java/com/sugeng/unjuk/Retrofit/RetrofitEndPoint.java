@@ -9,6 +9,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface RetrofitEndPoint {
     @FormUrlEncoded
@@ -169,6 +170,12 @@ public interface RetrofitEndPoint {
     @FormUrlEncoded
     @POST("Ambildataproduk.php")
     Call<dataprodukrespons> ambildataproduk(
+            @Field("id_produk") String idproduk
+    );
+
+    @FormUrlEncoded
+    @POST("Hapusproduksaya.php")
+    Call<dataprodukrespons> Hapusproduksaya(
             @Field("id_produk") String idproduk
     );
 
