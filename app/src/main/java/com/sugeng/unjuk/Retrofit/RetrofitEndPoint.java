@@ -1,5 +1,6 @@
 package com.sugeng.unjuk.Retrofit;
 
+import com.sugeng.unjuk.Respons.VerifyResponse;
 import com.sugeng.unjuk.Respons.dataprodukrespons;
 import com.sugeng.unjuk.Respons.dataumkmrespons;
 import com.sugeng.unjuk.Respons.userrespons;
@@ -20,7 +21,7 @@ public interface RetrofitEndPoint {
     );
     @FormUrlEncoded
     @POST("BuatAkun.php")
-    Call<userrespons> buatakun (
+    Call<userrespons> Unjuk (
             @Field("nama_user") String nama_user,
             @Field("email") String email,
             @Field("password") String password,
@@ -47,6 +48,15 @@ public interface RetrofitEndPoint {
             @Field("email") String email,
             @Field("password") String password
     );
+
+    @FormUrlEncoded
+    @POST("OTP/mail.php")
+    Call<VerifyResponse> verifikasi(
+            @Field("email") String email,
+            @Field("type") String type,
+            @Field("action") String action
+    );
+
     @FormUrlEncoded
     @POST("Dataprofil.php")
     Call<userrespons> Profil (
@@ -130,6 +140,16 @@ public interface RetrofitEndPoint {
     );
 
     @FormUrlEncoded
+    @POST("ubahkatasandi_profil.php")
+    Call<userrespons> ubahkatasandi_profil (
+
+            @Field("email") String emailuser,
+            @Field("oldPassword") String oldPassword,
+            @Field("newPassword") String newPassword
+
+    );
+
+    @FormUrlEncoded
     @POST("Updatephotoumkm.php")
     Call<dataumkmrespons> Update_photoumkm (
 
@@ -180,9 +200,23 @@ public interface RetrofitEndPoint {
     );
 
     @FormUrlEncoded
+    @POST("Cariproduksaya.php")
+    Call<dataprodukrespons> cariproduksaya(
+            @Field("id_umkm") String idumkm,
+            @Field("search_keyword") String keywoardcari
+    );
+
+    @FormUrlEncoded
     @POST("update_pp.php")
     Call<userrespons> updatePP(
             @Field("email") String email,
             @Field("photo") String photo
+    );
+    @FormUrlEncoded
+    @POST("mail.php")
+    Call<VerifyResponse> sendEmail(
+            @Field("email") String email,
+            @Field("type") String type,
+            @Field("action") String action
     );
 }

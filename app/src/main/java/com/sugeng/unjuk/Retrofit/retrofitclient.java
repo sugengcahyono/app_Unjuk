@@ -18,7 +18,7 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.TimeUnit;
 public class retrofitclient {
 // patah patah anydesk e ambek suara ku ga kurngu ta? suara u ga mlebu i,anydesk lancar chat wa ae
-    public static final String BASE_URL = "http://192.168.137.68/WEB_UNJUK1/"; // local
+    public static final String BASE_URL = "http://192.168.0.101/WEB_UNJUK1/"; // local
 
     public static final String PUBLIC_IMG =  BASE_URL + "public/img/";
 
@@ -38,6 +38,11 @@ public class retrofitclient {
     /**
      * connect to the rest server
      */
+
+    @NonNull
+    public static RetrofitEndPoint getInstance(){
+        return getConnection().create(RetrofitEndPoint.class);
+    }
     public static Retrofit getConnection() {
 
         Gson gson = new GsonBuilder().setLenient().create();

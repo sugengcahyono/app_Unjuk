@@ -58,7 +58,7 @@
 
                 <!-- Kolom Pencarian -->
                 <EditText
-                    android:id="@+id/searchEditText"
+                    android:id="@+id/text_cariproduksaya"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/_5sdp"
@@ -74,7 +74,7 @@
 
                 <!-- Tombol Cari -->
                 <ImageButton
-                    android:id="@+id/cariButton"
+                    android:id="@+id/btn_pencarian"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/oval_background1"

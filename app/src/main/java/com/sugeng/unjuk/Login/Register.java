@@ -96,28 +96,28 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (password.getText().toString().equalsIgnoreCase(konfirmasisandi.getText().toString())){
-                retrofitclient.getConnection().create(RetrofitEndPoint.class)
-                        .buatakun(namauser.getText().toString(), email.getText().toString(), password.getText().toString()
-                                ,nohpuser.getText().toString(),alamatuser.getText().toString(), "Mobile")
-                        .enqueue(new Callback<userrespons>() {
-                            @Override
-                            public void onResponse(Call<userrespons> call, Response<userrespons> response) {
-                                if(response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                    retrofitclient.getConnection().create(RetrofitEndPoint.class)
+                            .Unjuk(namauser.getText().toString(), email.getText().toString(), password.getText().toString()
+                                    ,nohpuser.getText().toString(),alamatuser.getText().toString(), "Mobile")
+                            .enqueue(new Callback<userrespons>() {
+                                @Override
+                                public void onResponse(Call<userrespons> call, Response<userrespons> response) {
+                                    if(response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
 
 
-                                    Intent intent = new Intent(Register.this, Login.class);
-                                    Toast.makeText(getApplicationContext(), "Berhasil Mendaftar", Toast.LENGTH_SHORT).show();
-                                    startActivity(intent);
-                                }else{
-                                    Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(Register.this, Login.class);
+                                        Toast.makeText(getApplicationContext(), "Berhasil Mendaftar", Toast.LENGTH_SHORT).show();
+                                        startActivity(intent);
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
 
-                            @Override
-                            public void onFailure(Call<userrespons> call, Throwable t) {
-                                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                                @Override
+                                public void onFailure(Call<userrespons> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }else {
                     Toast.makeText(Register.this, "Maaf kata sandi tidak sama", Toast.LENGTH_SHORT).show();
                 }

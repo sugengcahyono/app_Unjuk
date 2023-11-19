@@ -8,8 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.sugeng.unjuk.R;
+import com.sugeng.unjuk.Respons.VerifyResponse;
+import com.sugeng.unjuk.Retrofit.retrofitclient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LupaPassword extends AppCompatActivity {
 
@@ -27,11 +34,27 @@ public class LupaPassword extends AppCompatActivity {
         disini.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Membuat Intent untuk membuka aktivitas berikutnya
-                Intent intent = new Intent(LupaPassword.this, Konfirmasi_password_baru.class)
-                        .putExtra(Konfirmasi_password_baru.EMAIL, inputemail.getText().toString());
-                startActivity(intent);
+                retrofitclient.getInstance().verifikasi(
+                        inputemail.getText().toString(), "ForgotPass", "new"
+                ).enqueue(new Callback<VerifyResponse>() {
+                    @Override
+                    public void onResponse(Call<VerifyResponse> call, Response<VerifyResponse> response) {
+                        if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                            startActivity(
+                                    new Intent(LupaPassword.this, kodeotp.class)
+                                            .putExtra(kodeotp.OTP, response.body().getData().getOtp())
+                                            .putExtra(kodeotp.EMAIL, inputemail.getText().toString())
+                            );
+                        }else {
+                            Toast.makeText(LupaPassword.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<VerifyResponse> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
             }
         });
 

@@ -131,43 +131,52 @@ public class Upload extends Fragment {
         uploadproduk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                retrofitclient.getConnection().create(RetrofitEndPoint.class)
-                        .btn_uploadproduk(
-                                "", namaproduk.getText().toString(), hargaproduk.getText().toString(),
-                                kategoriButton.getText().toString(), deskripsiproduk.getText().toString(),
-                                pirtproduk.getText().toString(), bpomproduk.getText().toString(),
-                                idhalalproduk.getText().toString(),
-                                ImageUtil.bitmapToBase64String(bitImage1, 100),
-                                ImageUtil.bitmapToBase64String(bitImage2, 100),
-                                ImageUtil.bitmapToBase64String(bitImage3, 100),
-                                Upload.this.sharedPreferences.getString("id_umkm", "")
-                        ).enqueue(new Callback<dataprodukrespons>() {
-                            @Override
-                            public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
-                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
-                                    Toast.makeText(requireContext(), "Data Berhasil diupload", Toast.LENGTH_SHORT).show();
-                                    namaproduk.setText("");
-                                    hargaproduk.setText("");
-                                    jenisusahaButton.setText("");
-                                    pirtproduk.setText("");
-                                    kategoriButton.setText("");
-                                    deskripsiproduk.setText("");
-                                    bpomproduk.setText("");
-                                    idhalalproduk.setText("");
-                                    uploadfoto1.setImageDrawable(null);
-                                    uploadfoto2.setImageDrawable(null);
-                                    uploadfoto3.setImageDrawable(null);
-                                } else {
-                                    Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                String data1, data2, data3;
+
+                if (bitImage1 != null && bitImage2 != null && bitImage3 != null) {
+                    data1 = ImageUtil.bitmapToBase64String(bitImage1, 100);
+                    data2 = ImageUtil.bitmapToBase64String(bitImage2, 100);
+                    data3 = ImageUtil.bitmapToBase64String(bitImage3, 100);
+
+                    retrofitclient.getConnection().create(RetrofitEndPoint.class)
+                            .btn_uploadproduk(
+                                    "", namaproduk.getText().toString(), hargaproduk.getText().toString(),
+                                    kategoriButton.getText().toString(), deskripsiproduk.getText().toString(),
+                                    pirtproduk.getText().toString(), bpomproduk.getText().toString(),
+                                    idhalalproduk.getText().toString(),
+                                    data1, data2, data3,
+                                    Upload.this.sharedPreferences.getString("id_umkm", "")
+                            ).enqueue(new Callback<dataprodukrespons>() {
+                                @Override
+                                public void onResponse(Call<dataprodukrespons> call, Response<dataprodukrespons> response) {
+                                    if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
+                                        Toast.makeText(requireContext(), "Data Berhasil diupload", Toast.LENGTH_SHORT).show();
+                                        namaproduk.setText("");
+                                        hargaproduk.setText("");
+                                        jenisusahaButton.setText("");
+                                        pirtproduk.setText("");
+                                        kategoriButton.setText("");
+                                        deskripsiproduk.setText("");
+                                        bpomproduk.setText("");
+                                        idhalalproduk.setText("");
+                                        uploadfoto1.setImageDrawable(null);
+                                        uploadfoto2.setImageDrawable(null);
+                                        uploadfoto3.setImageDrawable(null);
+                                    } else {
+                                        Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
 
-                            @Override
-                            public void onFailure(Call<dataprodukrespons> call, Throwable t) {
+                                @Override
+                                public void onFailure(Call<dataprodukrespons> call, Throwable t) {
 
-                            }
-                        });
+                                }
+                            });
 
+                } else {
+                    Toast.makeText(requireContext(), "Data Gambar Kosong", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

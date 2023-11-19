@@ -86,7 +86,7 @@
                         app:endIconMode="password_toggle"
 
                         app:helperTextEnabled="true"
-                        app:helperText="Kata Sandi Lama"
+
                         app:helperTextTextColor="@android:color/holo_blue_dark"
                         >
 
@@ -195,7 +195,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
-                        android:id="@+id/Btnsimpan"
+                        android:id="@+id/Btnsimpanpass"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_50sdp"

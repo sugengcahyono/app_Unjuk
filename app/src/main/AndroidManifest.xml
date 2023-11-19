@@ -17,6 +17,9 @@
         android:theme="@style/Theme.UNjuk"
         tools:targetApi="31">
         <activity
+            android:name=".Login.otp_register"
+            android:exported="false" />
+        <activity
             android:name=".Login.Konfirmasi_password_baru"
             android:exported="false" />
         <activity

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.sugeng.unjuk.Model.produkmodel;
 import com.sugeng.unjuk.R;
 import com.sugeng.unjuk.Respons.dataprodukrespons;
@@ -64,6 +65,7 @@ public static View.OnClickListener clicklistener;
         produkmodel item = data.get(position);
         holder.namaproduk.setText(item.getNamaproduk());
         holder.hargaproduk.setText(item.getHargaproduk());
+        holder.setImage(context, retrofitclient.PRODUK_PHOTO_URL + item.getGambarproduk1());
 //        holder.fotoproduk.setImageURI(item.getGambarproduk1());
 //        holder.idproduk.setText(item.getIdproduk());
 
@@ -123,6 +125,15 @@ public static View.OnClickListener clicklistener;
             btnhapus = itemView.findViewById(R.id.btn_hapus);
 //            idproduk = itemView.findViewById(R.id.id_produk);
 
+        }
+
+        private void setImage(Context context, String url){
+            System.out.println(url);
+            Glide.with(context)
+                    .load(url)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .centerCrop()
+                    .into(fotoproduk);
         }
     }
 

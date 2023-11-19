@@ -1,9 +1,11 @@
 package com.sugeng.unjuk;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -79,4 +81,25 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+
+    public void onBackPressed() {
+        // Tampilkan peringatan
+        new AlertDialog.Builder(this)
+                .setTitle("Kembali ke login")
+                .setMessage("Apakah Anda yakin ingin kembali ke halaman login?")
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Keluar dari aplikasi
+                        finish();
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Batal keluar
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+    }
+
     }

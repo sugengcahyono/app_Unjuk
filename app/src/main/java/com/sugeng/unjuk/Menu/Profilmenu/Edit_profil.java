@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
+import com.sugeng.unjuk.Menu.Profile;
 import com.sugeng.unjuk.Model.usermodel;
 import com.sugeng.unjuk.R;
 import com.sugeng.unjuk.Respons.userrespons;
@@ -159,6 +160,10 @@ public class Edit_profil extends AppCompatActivity {
                                     namauser.setText(profil.getNama_user());
                                     notelpuser.setText(profil.getNotelp_user());
                                     alamatuser.setText(profil.getAlamat_user());
+
+                                    Intent intent = new Intent(Edit_profil.this, Edit_profil.class);
+                                    startActivity(intent);
+                                    finish();
 
                                     // Mengambil foto profil dan menampilkannya dengan Picasso
                                     userFotoURL = profil.getUserfoto();

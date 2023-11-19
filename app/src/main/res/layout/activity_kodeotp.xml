@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login.LupaPassword"
     android:background="@drawable/logobaru"
-    >
+    tools:context=".Login.LupaPassword">
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
+        android:layout_height="match_parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,42 +18,40 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
 
-            android:padding="@dimen/_20sdp"
-            >
+            android:padding="@dimen/_20sdp">
+
             <RelativeLayout
                 android:id="@+id/your_relative_layout_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                >
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
                 <ImageButton
                     android:id="@+id/Btnback"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/outline_arrow_circle_left_24"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:background="@android:color/transparent"
+                    android:src="@drawable/outline_arrow_circle_left_24"
                     android:text="Kembali" />
-
 
 
                 <LinearLayout
                     android:id="@+id/lin_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_200sdp"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_200sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:orientation="vertical"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    >
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -67,8 +61,7 @@
                         android:text="OTP"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/_30sdp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -77,8 +70,8 @@
                         android:text="Masukkan kode OTP yang telah dikirimkan melalui Email."
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
+
                     <com.otpview.OTPTextView
                         android:id="@+id/votp_inp_otp"
                         android:layout_width="wrap_content"
@@ -102,39 +95,37 @@
                         app:width="35dp" />
 
 
+                    <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        app:boxBackgroundColor="@color/white"-->
+                    <!--                        app:hintEnabled="false"-->
+                    <!--                        >-->
 
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        app:boxBackgroundColor="@color/white"-->
-<!--                        app:hintEnabled="false"-->
-<!--                        >-->
+                    <!--                        <EditText-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="@dimen/_50sdp"-->
+                    <!--                            android:layout_centerVertical="true"-->
+                    <!--                            android:hint="Kode OTP"-->
+                    <!--                            android:textSize="@dimen/_12sdp"-->
+                    <!--                            android:inputType="number"-->
+                    <!--                            android:textColor="@color/black"-->
+                    <!--                            android:textColorHint="@color/black"-->
+                    <!--                            />-->
 
-<!--                        <EditText-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="@dimen/_50sdp"-->
-<!--                            android:layout_centerVertical="true"-->
-<!--                            android:hint="Kode OTP"-->
-<!--                            android:textSize="@dimen/_12sdp"-->
-<!--                            android:inputType="number"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:textColorHint="@color/black"-->
-<!--                            />-->
-
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+                    <!--                    </com.google.android.material.textfield.TextInputLayout>-->
                     <TextView
                         android:id="@+id/Btnkirimulang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="@dimen/_30sdp"
                         android:text="Kirim Ulang"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/_10sdp"
-                        android:layout_gravity="center"
                         android:textStyle="bold"
 
                         />
-
 
 
                     <Button
@@ -144,15 +135,12 @@
                         android:layout_marginTop="@dimen/_50sdp"
                         android:backgroundTint="@color/blue"
                         android:text="Kirim"
-                        android:textSize="@dimen/_15sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"
-                        />
-
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
-
 
 
             </RelativeLayout>

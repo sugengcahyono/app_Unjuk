@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".Login.otp_register"
     android:background="@drawable/logobaru"
-    tools:context=".Login.Konfirmasi_password_baru">
-
+    >
 
 
     <ScrollView
@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:text="Buat Kata Sandi"
+                        android:text="OTP"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/_30sdp"
                         android:textStyle="bold"
@@ -72,90 +72,68 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
-                        android:text="Kata Sandi Baru"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:text="Masukkan kode OTP yang telah dikirimkan melalui Email."
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
                         />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textinputlayout"
-                        android:layout_width="match_parent"
+                    <com.otpview.OTPTextView
+                        android:id="@+id/votp_inp_otp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        app:boxBackgroundColor="@color/white"
-
-                        app:counterEnabled="true"
-                        app:counterMaxLength="20"
-
-                        app:endIconMode="password_toggle"
-
-                        app:helperTextEnabled="true"
-                        app:helperText="Masukkan Kata Sandi Baru"
-                        app:helperTextTextColor="@android:color/holo_blue_dark"
-                        >
-
-                        <EditText
-                            android:id="@+id/text_katasandibaru"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_50sdp"
-                            android:layout_centerVertical="true"
-                            android:hint="Kata Sandi"
-                            android:textSize="@dimen/_12sdp"
-                            android:maxLength="20"
-                            android:inputType="textPassword"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/black"
-
-                            />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="30dp"
+                        android:background="@color/transparent"
+                        android:importantForAutofill="no"
+                        android:textColor="@android:color/black"
+                        app:box_margin="4dp"
+                        app:height="36dp"
+                        app:hide_otp="false"
+                        app:hide_otp_drawable="@drawable/bg_otp_box_hide"
+                        app:length="6"
+                        app:otp_box_background="@drawable/bg_otp_box"
+                        app:otp_box_background_active="@drawable/bg_otp_box_active"
+                        app:otp_box_background_error="@drawable/bg_otp_box_error"
+                        app:otp_box_background_inactive="@drawable/bg_otp_box_inactive"
+                        app:otp_box_background_success="@drawable/bg_otp_box_success"
+                        app:otp_text_size="16sp"
+                        app:width="35dp" />
 
 
+
+                    <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        app:boxBackgroundColor="@color/white"-->
+                    <!--                        app:hintEnabled="false"-->
+                    <!--                        >-->
+
+                    <!--                        <EditText-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="@dimen/_50sdp"-->
+                    <!--                            android:layout_centerVertical="true"-->
+                    <!--                            android:hint="Kode OTP"-->
+                    <!--                            android:textSize="@dimen/_12sdp"-->
+                    <!--                            android:inputType="number"-->
+                    <!--                            android:textColor="@color/black"-->
+                    <!--                            android:textColorHint="@color/black"-->
+                    <!--                            />-->
+
+                    <!--                    </com.google.android.material.textfield.TextInputLayout>-->
                     <TextView
-                        android:layout_width="match_parent"
+                        android:id="@+id/Btnkirimulang"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-
-                        android:text="Konfirmasi Kata Sandi Baru"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:text="Kirim Ulang"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_10sdp"
+                        android:layout_gravity="center"
                         android:textStyle="bold"
+
                         />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_konfirmasi_katasandi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        app:boxBackgroundColor="@color/white"
-
-                        app:counterEnabled="true"
-                        app:counterMaxLength="20"
-
-                        app:endIconMode="password_toggle"
-
-                        app:helperTextEnabled="true"
-
-                        app:helperTextTextColor="@android:color/holo_blue_dark"
-                        >
-
-                        <EditText
-                            android:id="@+id/Konfirmasi_sandi"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_50sdp"
-                            android:layout_centerVertical="true"
-                            android:hint="Kata Sandi"
-                            android:textSize="@dimen/_12sdp"
-                            android:maxLength="20"
-                            android:inputType="textPassword"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/black"
-
-                            />
-
-                    </com.google.android.material.textfield.TextInputLayout>
 
 
                     <Button
