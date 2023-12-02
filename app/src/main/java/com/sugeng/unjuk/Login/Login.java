@@ -33,6 +33,8 @@ public class Login extends AppCompatActivity {
     GoogleUsers googleUsers;
     Button btngoogle;
 
+    SesionManager sesionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,7 @@ public class Login extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
-
+//Button Google
         btngoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +56,7 @@ public class Login extends AppCompatActivity {
         });
 
 
-        // Menghubungkan tombol dengan kode Java
+        // Menghubungkan tombol dengan kode Java ke Menu Buat akun
         TextView disini = findViewById(R.id.Btndisini);
 
         // Menambahkan onClickListener untuk tombol
@@ -67,7 +69,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        // Menghubungkan tombol kedua dengan kode Java
+        // Menghubungkan tombol kedua dengan kode Java Ke menu lupa passwoard
         TextView lupapassword = findViewById(R.id.BtnLupapassword);
 
         // Menambahkan onClickListener untuk tombol kedua
@@ -86,7 +88,7 @@ public class Login extends AppCompatActivity {
         editText =
                 findViewById(R.id.pass);
 
-        // Menambahkan onClickListener untuk tombol login
+ // Menambahkan onClickListener untuk tombol login
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +109,10 @@ public class Login extends AppCompatActivity {
                                     editor.putString("id_produk", user.getIdproduk());
                                     editor.apply();
 
+                                    sesionManager = new SesionManager(Login.this);
+                                    usermodel login = response.body().getData();
+                                    sesionManager.createLoginSession(login);
+
                                     Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                     // Membuat Intent untuk membuka aktivitas berikutnya
                                     String nama = txtEmail.getText().toString();
@@ -126,7 +132,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        // Toggle lihat password
+// Toggle lihat password dan text helper pasword
         textInputLayout = findViewById(R.id.textinputlayout);
         editText = findViewById(R.id.pass);
 
@@ -162,6 +168,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
+//Login dengan Google
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -185,6 +192,10 @@ public class Login extends AppCompatActivity {
 
                                         SharedPreferences sharedPreferences = getSharedPreferences("prefLogin", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                        sesionManager = new SesionManager(Login.this);
+                                        usermodel login = response.body().getData();
+                                        sesionManager.createLoginSession(login);
 
                                         usermodel user = response.body().getData();
                                         editor.putString("id_akun", user.getIdakun());
@@ -221,12 +232,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        googleUsers.onActivityResult(requestCode, resultCode, data);
-//    }
+
 }
 
 

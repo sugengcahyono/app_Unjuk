@@ -90,7 +90,7 @@ public class Register extends AppCompatActivity {
         EditText nohpuser = (EditText) findViewById(R.id.edittext_nohpuser);
         EditText alamatuser = (EditText) findViewById(R.id.edittext_alamatuser);
 
-        // Menambahkan onClickListener untuk tombol
+        // Menambahkan onClickListener untuk tombol (Button Daftar)
         Daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

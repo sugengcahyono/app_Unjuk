@@ -7,21 +7,35 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.sugeng.unjuk.Login.Login;
+import com.sugeng.unjuk.Login.SesionManager;
+import com.sugeng.unjuk.Menu.dashboard;
 
 public class Splashscreen extends AppCompatActivity {
+
+    SesionManager sesionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
 
-        new Handler().postDelayed(new Runnable() {
+        SesionManager sesionManager = new SesionManager(this);
+
+        final Handler handler = new Handler();
+
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splashscreen.this, Login.class); // Ganti dengan LoginActivity
-                startActivity(intent);
+                // jika pengguna sudah logiin
+                if (sesionManager.isLoggedIn()) {
+                    Intent intent = new Intent(Splashscreen.this, MainActivity.class);
+                    startActivity(intent);
+                } else { // jika pengguna belum login
+                    Intent intent = new Intent(Splashscreen.this, Login.class);
+                    startActivity(intent);
+                }
                 finish();
             }
-        }, 3000);
+        }, 3000); //3 detik
     }
 }

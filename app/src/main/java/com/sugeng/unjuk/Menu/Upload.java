@@ -127,6 +127,7 @@ public class Upload extends Fragment {
             }
         });
 
+//BUtton Upload PRoduk
         uploadproduk = view.findViewById(R.id.Btnupload);
         uploadproduk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,7 +176,7 @@ public class Upload extends Fragment {
                             });
 
                 } else {
-                    Toast.makeText(requireContext(), "Data Gambar Kosong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Foto harus terisi semua", Toast.LENGTH_SHORT).show();
                 }
 
             }

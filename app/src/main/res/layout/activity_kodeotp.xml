@@ -114,18 +114,7 @@
                     <!--                            />-->
 
                     <!--                    </com.google.android.material.textfield.TextInputLayout>-->
-                    <TextView
-                        android:id="@+id/Btnkirimulang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_30sdp"
-                        android:text="Kirim Ulang"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/_10sdp"
-                        android:textStyle="bold"
 
-                        />
 
 
                     <Button

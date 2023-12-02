@@ -1,10 +1,13 @@
 package com.sugeng.unjuk.Menu;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.sugeng.unjuk.Login.Login;
+import com.sugeng.unjuk.Login.SesionManager;
 import com.sugeng.unjuk.Menu.Profilmenu.DataUmkm;
 import com.sugeng.unjuk.Menu.Profilmenu.Edit_profil;
 import com.sugeng.unjuk.Menu.Profilmenu.Ganti_katasandi;
@@ -39,6 +44,8 @@ public class Profile extends Fragment {
     private SharedPreferences.Editor editor;
 
     private CircleImageView fotoProfil;
+    SesionManager sesionManager;
+    Button Keluar;
 
 
 
@@ -53,10 +60,24 @@ public class Profile extends Fragment {
         Button Dataumkm = (Button) view.findViewById(R.id.btn_Dataumkm);
         Button Gantisandi = (Button) view.findViewById(R.id.btn_Gantikatasandi);
         CircleImageView fotoProfil = (CircleImageView) view.findViewById(R.id.foto_profiluser);
+        Keluar = view.findViewById(R.id.Btn_keluar);
 
         sharedPreferences = getContext().getSharedPreferences("prefLogin", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
+//session Manager
+        sesionManager = new SesionManager(requireContext());
+
+        Keluar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showLogoutConfirmationDialog();
+            }
+        });
+
+
+
+//menampilkan foto profil
         Glide.with(Profile.this)
                 .load(retrofitclient.USER_PHOTO_URL+ sharedPreferences.getString("user_foto", ""))
                 .into(fotoProfil);
@@ -87,7 +108,7 @@ public class Profile extends Fragment {
 
 
 
-        // Menambahkan aksi ketika tombol diklik
+// Menambahkan aksi ketika tombol diklik
         editprofil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,6 +125,7 @@ public class Profile extends Fragment {
                 startActivity(intent);
             }
         });
+//klik ganti katasandi
         Gantisandi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,4 +145,39 @@ public class Profile extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
+
+// BUtton Keluar
+    private void showLogoutConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Konfirmasi Keluar");
+        builder.setMessage("Apakah Anda yakin ingin Keluar dari Akun ini?");
+
+        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Lakukan logout jika pengguna memilih "Ya"
+                sesionManager.logoutSession();
+                moveToLogin();
+            }
+        });
+
+        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Tidak melakukan apa-apa jika pengguna memilih "Tidak"
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    private void moveToLogin() {
+        // Pindah ke halaman login
+        Intent intent = new Intent(requireContext(), Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        requireActivity().finish();
+    }
+
 }

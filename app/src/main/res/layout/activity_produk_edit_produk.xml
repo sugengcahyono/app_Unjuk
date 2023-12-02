@@ -134,6 +134,8 @@
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     app:hintEnabled="false"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -142,7 +144,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/_12sdp"
-
+                        android:maxLength="50"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         />
@@ -258,6 +260,8 @@
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     app:hintEnabled="false"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="16"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -266,7 +270,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/_12sdp"
-
+                        android:maxLength="16"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         />
@@ -291,6 +295,8 @@
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     app:hintEnabled="false"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -299,7 +305,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/_12sdp"
-
+                        android:maxLength="15"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         />
@@ -323,6 +329,8 @@
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     app:hintEnabled="false"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="25"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -331,7 +339,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/_12sdp"
-
+                        android:maxLength="25"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         />

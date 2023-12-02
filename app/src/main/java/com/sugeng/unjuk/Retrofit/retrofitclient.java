@@ -17,15 +17,13 @@ import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 public class retrofitclient {
-// patah patah anydesk e ambek suara ku ga kurngu ta? suara u ga mlebu i,anydesk lancar chat wa ae
-    public static final String BASE_URL = "http://192.168.0.101/WEB_UNJUK1/"; // local
+
+//    public static final String BASE_URL = "http://192.168.0.106/WEB_UNJUK1/"; // local
+    public static final String BASE_URL = "https://unjuk.tifnganjuk.com/"; // local
 
     public static final String PUBLIC_IMG =  BASE_URL + "public/img/";
 
-
-//    public static final String BASE_URL = "http://172.16.106.67/arenafinder-web/"; // wifi
-
-    public static final String CONTROLLERS = BASE_URL + "mobile/";
+    public static final String CONTROLLERS = BASE_URL + "Mobile/";
 
     public static final String USER_PHOTO_URL = BASE_URL + "public/img/user-photo/";
     public static final String UMKM_PHOTO_URL = BASE_URL + "public/img/umkm-photo/";

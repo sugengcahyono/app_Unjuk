@@ -18,6 +18,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sugeng.unjuk.Login.Login;
+import com.sugeng.unjuk.Login.SesionManager;
 import com.sugeng.unjuk.Menu.Profilmenu.Produk_EditProduk;
 import com.sugeng.unjuk.Menu.Profilmenu.Recyclerview_produk;
 import com.sugeng.unjuk.Model.produkmodel;
@@ -40,6 +42,7 @@ public class dashboard extends Fragment {
     EditText cariproduksaya;
     private ArrayList<produkmodel> data = new ArrayList<>();
     private SharedPreferences sharedPreferences;
+    SesionManager sesionManager;
 
 
     @Override
@@ -137,7 +140,21 @@ public class dashboard extends Fragment {
 
         btnhapus =  view.findViewById(R.id.btn_hapus);
         // Inflate the layout for this fragment
+
+
+       sesionManager = new SesionManager(requireContext());
+       if (!sesionManager.isLoggedIn()) {
+           moveToLogin();
+       }
+
         return view;}
+
+    private void moveToLogin() {
+        Intent intent = new Intent(requireContext(), Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+        requireActivity().finish();
+    }
 
 //method untuk pencarian produk saya
     private void cariProdukDenganKeyword(String keyword) {

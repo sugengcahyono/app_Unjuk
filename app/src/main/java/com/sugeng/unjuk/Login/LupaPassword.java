@@ -30,7 +30,7 @@ public class LupaPassword extends AppCompatActivity {
         Button disini = findViewById(R.id.Btnlanjut);
         EditText inputemail = findViewById(R.id.text_emailsandi);
 
-        // Menambahkan onClickListener untuk tombol
+// Menambahkan onClickListener untuk tombol kirim otp dan menuju ke form otp
         disini.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +44,9 @@ public class LupaPassword extends AppCompatActivity {
                                     new Intent(LupaPassword.this, kodeotp.class)
                                             .putExtra(kodeotp.OTP, response.body().getData().getOtp())
                                             .putExtra(kodeotp.EMAIL, inputemail.getText().toString())
+
                             );
+                            Toast.makeText(LupaPassword.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(LupaPassword.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }

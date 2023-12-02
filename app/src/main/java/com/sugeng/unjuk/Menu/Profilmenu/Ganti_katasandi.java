@@ -85,7 +85,7 @@ public class Ganti_katasandi extends AppCompatActivity {
 
             }
         });
-
+//button Siimpan
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
