@@ -89,9 +89,14 @@ public class Ganti_katasandi extends AppCompatActivity {
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 SharedPreferences sharedPreferences = getSharedPreferences("prefLogin", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                // Check if the new password matches the confirmed password
+                if (!passbaru.getText().toString().equalsIgnoreCase(konfrpass.getText().toString())) {
+                    Toast.makeText(Ganti_katasandi.this, "Maaf konfirmasi kata sandi tidak sama", Toast.LENGTH_SHORT).show();
+                    return; // Exit the onClick method if passwords don't match
+                }
 
                 retrofitclient.getInstance().ubahkatasandi_profil(
                         sharedPreferences.getString("email", ""),
@@ -100,7 +105,6 @@ public class Ganti_katasandi extends AppCompatActivity {
                 ).enqueue(new Callback<userrespons>() {
                     @Override
                     public void onResponse(Call<userrespons> call, Response<userrespons> response) {
-                        if (passbaru.getText().toString().equalsIgnoreCase(konfrpass.getText().toString())){
                         if (response.body() != null) {
                             if (response.body().getStatus().equalsIgnoreCase("success")) {
                                 passlama.setText("");
@@ -115,10 +119,6 @@ public class Ganti_katasandi extends AppCompatActivity {
                             // Penanganan kondisi jika respons body null
                             Toast.makeText(Ganti_katasandi.this, "Terjadi kesalahan pada server", Toast.LENGTH_SHORT).show();
                         }
-
-                    }else {
-                        Toast.makeText(Ganti_katasandi.this, "Maaf konfirmasi kata sandi tidak sama", Toast.LENGTH_SHORT).show();
-                    }
                     }
 
                     @Override
@@ -127,10 +127,9 @@ public class Ganti_katasandi extends AppCompatActivity {
                         Toast.makeText(Ganti_katasandi.this, "Gagal terhubung ke server", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
             }
         });
+
 
     }
 
